@@ -26,7 +26,7 @@ const adminverification = async (req, res, next) => {
     const adminPassword = process.env.ADMIN_PASSWORD;
    
 
-    if (req.body.email == adminEmail && req.body.password == adminPassword) {
+    if (req.body.email === adminEmail && req.body.password === adminPassword) {
       req.session.email = adminEmail;
       res.redirect("/admin");
     } else {
