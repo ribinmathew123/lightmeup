@@ -13,7 +13,7 @@ const { render } = require("ejs");
 
 const adminLoginpage = async (req, res,next) => {
   try {
-    res.render("../views/admin/adminlogin");
+    res.render("../views/admin/adminLogin");
 
   } catch (error) {
     next(error)
