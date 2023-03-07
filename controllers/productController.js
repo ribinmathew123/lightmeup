@@ -23,10 +23,6 @@ const { spawn } = require("child_process");
 
 
 
-
-
-
-
 const postAddCategoryPage = async (req, res, next) => {
   try {
     let categoryName = req.body.catname.trim();
@@ -43,6 +39,7 @@ const postAddCategoryPage = async (req, res, next) => {
     next(error);
   }
 };
+
 
 
 const getProductCategoryPage = (req, res,next) => {
@@ -147,7 +144,6 @@ const productImageEdit = async (req, res,next) => {
 };
 
 
-
 const getcategorylist = async (req, res,next) => {
   try {
     categorymodel.find({}, (err, userdetails) => {
@@ -163,6 +159,7 @@ const getcategorylist = async (req, res,next) => {
     next(error);
   }
 };
+
 
 
 
@@ -195,6 +192,7 @@ const getproductlistpage = async (req, res,next) => {
 
 
 
+
 //  blockcategory,
 const blockcategory = async (req, res,next) => {
   try {
@@ -216,6 +214,7 @@ const blockcategory = async (req, res,next) => {
     next(error);
   }
 };
+
 
 
 
@@ -482,6 +481,9 @@ const getorderManagement = async (req, res,next) => {
     next(error);
   }
 };
+
+
+
 
 // order status changing
 const orderStatusChanging = async (req, res, next) => {

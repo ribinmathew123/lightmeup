@@ -12,27 +12,31 @@ const { render } = require("ejs");
 
 
 const adminLoginpage = async (req, res) => {
+
   res.render("../views/admin/adminlogin");
 };
 
+
+
+
+
+
+
+
 const adminverification = async (req, res, next) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
-    const admin = await Admin.findOne({ email: email });
+    const adminEmail = process.env.ADMIN_EMAIL;
+    const adminPassword = process.env.ADMIN_PASSWORD;
+   
 
-    if (admin) {
-      if (email == admin.email && password == admin.password) {
-        req.session.email = email;
-        res.redirect("/admin");
-      } else {
-        res.render("../views/admin/adminLogin.ejs", {
-          wrong: "Invalid Credentials",
-        });
-      }
+    if (req.body.email === adminEmail && req.body.password === adminPassword) {
+      req.session.email = adminEmail;
+      res.redirect("/admin");
     } else {
-      res.render("../views/admin/adminLogin.ejs", { wrong: "Admin Not Found" });
+      res.render("../views/admin/adminLogin.ejs", { wrong: "Invalid credentials" });
+    
     }
+
   } catch (error) {
     next(error);
   }

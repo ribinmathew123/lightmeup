@@ -51,15 +51,9 @@
           <td><%= index + 1%></td>
           <td><%= item.createdAt.toLocaleDateString() %> </td>
           <td><%=item.name%> </td> 
-
-          <td>   <% item.product.forEach((pItem) => { %><p> <%= pItem.name %></p>  <% }) %>  </td>
-
-
+          <td> <% item.product.forEach((pItem) => { %><p> <%= pItem.name %></p>  <% }) %>  </td>
           <td> <% item.orderItems.forEach((orderItem) => { %>
            <p><%= orderItem.quantity %> </p>
-
-            
-
            <% }) %> </td>
 
            <td>

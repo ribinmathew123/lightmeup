@@ -343,13 +343,18 @@
             <thead>
                 <tr>
 
-                    <th>Order</th>
-                    <th>Name</th>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Order Items</th>
                     <th>Quantity</th>
                     <th>Payment Method</th>
-                    <th>Status</th>
-                    <th>Price</th>
+                    <th>total Price</th>
+                     <th>Satus</th> 
                      <th>Address</th> 
+
+                     <th>Action</th> 
+
+
                 </tr>
             </thead>
             <tbody>
@@ -359,12 +364,39 @@
                     <tr id="cart-item-<%= item.orderItems.productId %>">
 
                     <td><%= index + 1%></td>
-                    <td><%=item.product.name%></td>
-                    <td><%=item.orderItems.quantity%></td>
+
+                    <td><%= item.createdAt.toLocaleDateString() %> </td>
+
+
+                    <td> <% item.product.forEach((pItem) => { %><p> <%= pItem.name %></p>  <% }) %>  </td>
+
+
+                    
+                    <td> <% item.orderItems.forEach((orderItem) => { %>
+                        <p><%= orderItem.quantity %> </p>
+                        <% }) %> </td>
+
+
                     <td ><%=item.paymentMethod%></td>
-                    <td><span class="success"><%=item.orderItems.orderStatus%></span></td>
-                    <td >$<%=item.product.cost%></td>
+
+
+                    <td >      <p>&#8377; <%=item.totalPrice%> </p> 
+                    </td>
+<td>
+                    <div class="mb-3 " >
+                        <p><%=item.paymentMethod%> : <% if (item.paymentStatus === 'Cancel') { %>
+                          <p style="color:rgb(243, 6, 6);"><%= item.paymentStatus %></p>
+                        <% } else { %>
+                          <p style="color: rgb(15, 221, 32);"><%= item.paymentStatus %></p>
+                        <% } %>
+                         </p>
+                       
+                    </div>
+                </td>
+
                     <td ><%=item.name%> <%=item.street%> <%=item.city%> <%=item.state%> <%=item.code%></td>
+                    <td ><button> Cancel </button></td>
+
 
                 </tr>  
             

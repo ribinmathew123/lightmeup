@@ -404,19 +404,13 @@ const getuserProfilePage = async (req, res, next) => {
     
     const orderList = await orderModel.aggregate([
       {
-         $unwind: "$orderItems",
-      },
-     {
-     $lookup: {
+        $lookup: {
           from: "products",
-            localField: "orderItems.productId",
-           foreignField: "_id",
-           as: "product",
-         },
-       },
-      {
-         $unwind: "$product",
-       },
+          localField: "orderItems.productId",
+          foreignField: "_id",
+          as: "product",
+        },
+      },
     ]);
     res.render("../views/user/userProfile", {
       login: req.session,
@@ -427,6 +421,10 @@ const getuserProfilePage = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
+
 
 
 
