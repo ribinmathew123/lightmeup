@@ -33,7 +33,7 @@ const adminverification = async (req, res, next) => {
       req.session.email = adminEmail;
       res.redirect("/admin");
     } else {
-      res.render("../views/admin/adminLogin.ejs", { wrong: "Invalid credentials" });
+      res.render("../views/admin/adminLogin.ejs");
     
     }
 
