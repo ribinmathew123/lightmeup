@@ -1,0 +1,856 @@
+<%- include('partials/header') %>
+    <!-- Start Offcanvas Search Bar Section -->
+
+   
+    <div id="search" class="search-modal">
+        <button type="button" class="close">×</button>
+        <form>
+            <input type="search" placeholder="type keyword(s) here" />
+            <button type="submit" class="btn btn-lg btn-golden">Search</button>
+        </form>
+    </div>
+    <!-- End Offcanvas Search Bar Section -->
+
+    <!-- Offcanvas Overlay -->
+    <div class="offcanvas-overlay"></div>
+
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section breadcrumb-bg-color--golden">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="breadcrumb-title">My Account</h3>
+                        <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/product-display">Shop</a></li>
+                                    <li class="active" aria-current="page">My Account</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ...:::: End Breadcrumb Section:::... -->
+
+
+
+
+
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm mt-3">
+                <div class="col-md-4 mb-3">
+                    <div class="card"style="max-width: 73%;">
+                        <div class="card-body" >
+                            <div class="d-flex flex-column align-items-center text-center  img-fluid" >
+                                <img src="/public/image/istockphoto-1316420668-612x612.jpg " style="max-width: 20% " alt="Admin"
+                                    class="rounded-circle"    
+                                    />
+                                <div class="mt-3">
+                                    <h4>
+                                        <%= userDatas.name %>
+                                    </h4>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- ...:::: Start Account Dashboard Section:::... -->
+    <div class="account-dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <!-- Nav tabs -->
+                    <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
+                        <ul role="tablist" class="nav flex-column dashboard-list">
+                            <li><a href="#dashboard" data-bs-toggle="tab"
+                                    class="nav-link btn btn-block btn-md btn-black-default-hover active">Dashboard</a>
+                            </li>
+                            <li> <a href="#account" data-bs-toggle="tab"
+                                class="nav-link btn btn-block btn-md btn-black-default-hover">Account Details</a></li>
+                            <li><a href="#address" data-bs-toggle="tab"
+                                class="nav-link btn btn-block btn-md btn-black-default-hover">Address</a></li>
+
+                           
+                                    <li><a href="#account-details" data-bs-toggle="tab"
+                                        class="nav-link btn btn-block btn-md btn-black-default-hover"> ADD Address</a>
+                                </li>
+                                    <li>  <a href="#orders" data-bs-toggle="tab"
+                                        class="nav-link btn btn-block btn-md btn-black-default-hover">Orders</a></li>
+
+                          
+
+                            <li><a href="#changepassword" data-bs-toggle="tab"
+                                    class="nav-link btn btn-block btn-md btn-black-default-hover">Change Password</a></li>
+                           
+                            <li><a href="/logout"
+                                    class="nav-link btn btn-block btn-md btn-black-default-hover">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <h4>Dashboard </h4>
+                            <p>From your account dashboard. you can easily check &amp; view your recent
+                                    orders</a>, manage your shipping and billing addresses</a> and <a
+                                    href>Edit your password and account details.</a></p>              
+                        </div>
+
+
+                        <div class="tab-pane fade" id="account">
+                            <h4>account details</h4>
+
+
+                            
+                            <div class="table_page table-responsive">
+                                <table>
+                                    <thead>
+                                        <!-- pfofile -->
+<div class="col-md-8">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <%= userDatas.name %>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <%= userDatas.email %>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <%= userDatas.phone %>
+                </div>
+            </div>
+            <hr>
+           
+            <div class="row">
+                <div class="col-sm-12">
+
+       <a id="edit-btn" class="nav-link btn btn-block btn-md btn-black-default-hover" href="#" data-toggle="modal" data-target="#edit-modal">Edit</a>
+                  
+                    <div class="text bg-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+
+
+
+
+<!-- profile -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+
+
+
+
+
+
+     <!-- edit popup page start -->
+                    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
+                    aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="edit-modal-label">Edit Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <form class="row g-3" action="/user_profiles/<%= Dataid%>" method="post">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Full Name</h6> 	
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  <input type="text" name="name" class="form-control" id="inputNanme4" required value="<%=userDatas.name%>">
+                                </div>
+                                
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  <input type="text" name="email" class="form-control" id="inputEmail4" readonly required value="<%=userDatas.email%>">
+                                </div>
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                  <input type="text" name="phone" class="form-control" id="inputPhone4" required value="<%=userDatas.phone%>">
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                    <div class="text-center">
+                                      <button type="submit" class="btn btn-primary">Update</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                               
+
+
+<!-- edit popup page end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               <!-- password -->
+
+                <div class="tab-pane fade" id="changepassword">
+                            <h4>Change your Password</h4>
+                            <form class="row g-3" action="/change-Password" method="post">
+                                <div class="card-body">
+                                    
+                                    <div class="row mt-1">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Current password</h6>
+                                        </div>
+
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="password" name="current" class="form-control"
+                                                id="inputNanme4" required value="">
+
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">
+                                                New password</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="password" name="new" class="form-control" id="inputNanme4"
+                                                required value="">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Confirm password</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="password" name="confirm" class="form-control"
+                                                id="inputNanme4" required value="">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col-sm-12 ">
+                                            <div class="text-center">
+                                                <button type="submit"
+                                                    class="w-100 text-center  mt-2 nav-link btn btn-block btn-md btn-black-default-hover">submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+<!-- password -->
+
+
+
+
+
+
+
+
+
+<!-- order -->
+
+
+<% var totalAmount=0 %>
+
+
+<div class="tab-pane fade" id="orders">
+    <h4>Orders</h4>
+    <div class="table_page table-responsive">
+        <table>
+            <thead>
+                <tr>
+
+                    <th>Order</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                     <th>Address</th> 
+                </tr>
+            </thead>
+            <tbody>
+                
+                <% orderList.forEach((item,index)=>{%>
+
+                    <tr id="cart-item-<%= item.orderItems.productId %>">
+
+                    <td><%= index + 1%></td>
+                    <td><%=item.product.name%></td>
+                    <td><%=item.orderItems.quantity%></td>
+                    <td ><%=item.paymentMethod%></td>
+                    <td><span class="success"><%=item.orderItems.orderStatus%></span></td>
+                    <td >$<%=item.product.cost%></td>
+                    <td ><%=item.name%> <%=item.street%> <%=item.city%> <%=item.state%> <%=item.code%></td>
+
+                </tr>  
+            
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="tab-pane fade" id="address">
+    <h4>Address</h4>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">NO</th>
+                    <th   scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% userDatas.addressDetails.forEach(function(user, index) { %>
+                <tr>
+                    <th scope="row"><%= index + 1 %></th>
+                    <td class="text-center"> <%= user.Fullname %></td>
+                    <td class="text-center"><%= user.email %></td>
+                    <td class="text-center"><%= user.mobile %></td>
+                    <td class="text-center"><%= user.houseaddress %><%= user.city %> <br><%= user.state %> <br><%= user.postal_code %></td>
+                    <td  class="d-flex text-center">
+                        <a href="/address-edit?addressId=<%= user._id %>" class="btn btn-sm btn-primary me-2">Edit</a>
+                       
+                       
+                        <button type="button" class="btn btn-golden" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal<%= user._id %>">Delete</button>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<% userDatas.addressDetails.forEach(function(user) { %>
+
+
+
+  <!-- Modal -->
+<div class="modal fade " id="exampleModal<%= user._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog    ">
+      <div class="modal-content modal-dialog-centered modal-sm modal-dialog-scrollable">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Address</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a  class="btn btn-golden" href="/address-delete?id=<%= user._id %>">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<%})%>
+
+<!-- end order -->
+
+<!-- addredd tab -->
+
+
+
+                            <div class="tab-pane" id="address">
+                            <p>The following addresses will be used on the checkout page by default.</p>
+                            <h5 class="billing-address">Billing address</h5>
+                            <a href="#" class="view">Edit</a>
+                            <p><strong>Bobby Jackson</strong></p>
+                            <address>
+                                Address: Your address goes here.
+                            </address>
+                        </div>
+
+                        <div class="tab-pane fade" id="account-details">
+                            <h3>Add New Address </h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                          
+                                             <br>
+
+                                             <form action="/address" class="user" method="POST">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">Full name*</label>
+                                                        <input type="text" class="form-control form-control-user"
+                                                            id="username" name="name" required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">Company/Shop</label>
+                                                        <input type="text" class="form-control form-control-user"
+                                                            id="" name="company" />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">Email*</label>
+                                                        <input type="email" class="form-control form-control-user"
+                                                            id="emailAddress" name="email" required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">Mobile*</label>
+                                                        <input type="tel" class="form-control form-control-user"
+                                                            id="" name="mobile" pattern="[5-9]{1}[0-9]{9}"
+                                                            required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">Country*</label>
+                                                        <input type="text" class="form-control form-control-user"
+                                                            id="" name="country" required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">State*</label>
+                                                        <input type="text" class="form-control form-control-user"
+                                                            id="" name="state" required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">City/Town*</label>
+                                                        <input type="text" class="form-control form-control-user"
+                                                            id="" name="town" required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                    <div class="col-sm-6 input-control">
+                                                        <label class="form-label">Postal Code/ZIP*</label>
+                                                        <input type="tel" class="form-control form-control-user"
+                                                            id="" name="zip" pattern="[0-9]{4,7}" required />
+                                                        <p class="valid_error"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 input-control">
+                                                        <label class="form-label">Street Address*</label>
+                                                        <textarea
+                                                            placeholder="Building No/Name, Locality, Street, Post Office"
+                                                            class="form-control" rows="3" id="" name="address"
+                                                            required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2 mx-1 form-group row justify-content-center">
+                                                    <button type="submit" class="btn btn-md btn-black-default-hover btn-user px-5">
+                                                        Add Address
+                                                    </button>
+                                                </div>
+                                            </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ...:::: End Account Dashboard Section:::... -->
+
+
+
+
+    <!-- Start Footer Section -->
+    <footer class="footer-section footer-bg section-top-gap-100">
+        <div class="footer-wrapper">
+            <!-- Start Footer Top -->
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row mb-n6">
+                        <div class="col-lg-3 col-sm-6 mb-6">
+                            <!-- Start Footer Single Item -->
+                          
+                        </div>
+                        
+                            <!-- End Footer Single Item -->
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- End Footer Top -->
+
+            <!-- Start Footer Center -->
+            
+            <!-- Start Footer Center -->
+
+            <!-- Start Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div
+                        class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
+                        <div class="col-auto mb-6">
+                            <div class="footer-copyright">
+                                <p class="copyright-text">&copy; 2023 <a href="">admin</a>. Made with <i
+                                        class="fa fa-heart text-danger"></i> by <a href=""
+                                        target="_blank">therankme</a> </p>
+
+                            </div>
+                        </div>
+                        <div class="col-auto mb-6">
+                            <div class="footer-payment">
+                                <div class="image">
+                                    <img src="assets/images/company-logo/payment.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Footer Bottom -->
+        </div>
+    </footer>
+    <!-- End Footer Section -->
+
+    <!-- material-scrolltop button -->
+    <button class="material-scrolltop" type="button"></button>
+
+    <!-- Start Modal Add cart -->
+    <div class="modal fade" id="modalAddcart" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close modal-close" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true"> <i class="fa fa-times"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="modal-add-cart-product-img">
+                                            <img class="img-fluid"
+                                                src="assets/images/product/default/home-1/default-1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Added to cart
+                                            successfully!</div>
+                                        <div class="modal-add-cart-product-cart-buttons">
+                                            <a href="">View Cart</a>
+                                            <a href="">Checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 modal-border">
+                                <ul class="modal-add-cart-product-shipping-info">
+                                    <li> <strong><i class="icon-shopping-cart"></i> There Are 5 Items In Your
+                                            Cart.</strong></li>
+                                    <li> <strong>TOTAL PRICE: </strong> <span>$187.00</span></li>
+                                    <li class="modal-continue-button"><a href="#" data-bs-dismiss="modal">CONTINUE
+                                            SHOPPING</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Modal Add cart -->
+
+
+
+    <!-- Start Modal Quickview cart -->
+    <div class="modal fade" id="modalQuickview" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="close modal-close" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true"> <i class="fa fa-times"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="product-details-gallery-area mb-7">
+                                    <!-- Start Large Image -->
+                                    <div class="product-large-image modal-product-image-large swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="product-image-large-image swiper-slide img-responsive">
+                                                <img src="assets/images/product/default/home-1/default-1.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-large-image swiper-slide img-responsive">
+                                                <img src="assets/images/product/default/home-1/default-2.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-large-image swiper-slide img-responsive">
+                                                <img src="assets/images/product/default/home-1/default-3.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-large-image swiper-slide img-responsive">
+                                                <img src="assets/images/product/default/home-1/default-4.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-large-image swiper-slide img-responsive">
+                                                <img src="assets/images/product/default/home-1/default-5.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-large-image swiper-slide img-responsive">
+                                                <img src="assets/images/product/default/home-1/default-6.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Large Image -->
+
+
+                                    <!-- Start Thumbnail Image -->
+                                    <div
+                                        class="product-image-thumb modal-product-image-thumb swiper-container pos-relative mt-5">
+                                        <div class="swiper-wrapper">
+                                            <div class="product-image-thumb-single swiper-slide">
+                                                <img class="img-fluid"
+                                                    src="assets/images/product/default/home-1/default-1.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-thumb-single swiper-slide">
+                                                <img class="img-fluid"
+                                                    src="assets/images/product/default/home-1/default-2.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-thumb-single swiper-slide">
+                                                <img class="img-fluid"
+                                                    src="assets/images/product/default/home-1/default-3.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-thumb-single swiper-slide">
+                                                <img class="img-fluid"
+                                                    src="assets/images/product/default/home-1/default-4.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-thumb-single swiper-slide">
+                                                <img class="img-fluid"
+                                                    src="assets/images/product/default/home-1/default-5.jpg" alt="">
+                                            </div>
+                                            <div class="product-image-thumb-single swiper-slide">
+                                                <img class="img-fluid"
+                                                    src="assets/images/product/default/home-1/default-6.jpg" alt="">
+                                            </div>
+                                        </div>
+                                        <!-- Add Arrows -->
+                                        <div class="gallery-thumb-arrow swiper-button-next"></div>
+                                        <div class="gallery-thumb-arrow swiper-button-prev"></div>
+                                    </div>
+                                    <!-- End Thumbnail Image -->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="modal-product-details-content-area">
+                                    <!-- Start  Product Details Text Area-->
+                                    <div class="product-details-text">
+                                        <h4 class="title">Nonstick Dishwasher PFOA</h4>
+                                        <div class="price"><del>$70.00</del>$80.00</div>
+                                    </div> <!-- End  Product Details Text Area-->
+                                    <!-- Start Product Variable Area -->
+                                    <div class="product-details-variable">
+                                        <!-- Product Variable Single Item -->
+                                        <div class="variable-single-item">
+                                            <span>Color</span>
+                                            <div class="product-variable-color">
+                                                <label for="modal-product-color-red">
+                                                    <input name="modal-product-color" id="modal-product-color-red"
+                                                        class="color-select" type="radio" checked>
+                                                    <span class="product-color-red"></span>
+                                                </label>
+                                                <label for="modal-product-color-tomato">
+                                                    <input name="modal-product-color" id="modal-product-color-tomato"
+                                                        class="color-select" type="radio">
+                                                    <span class="product-color-tomato"></span>
+                                                </label>
+                                                <label for="modal-product-color-green">
+                                                    <input name="modal-product-color" id="modal-product-color-green"
+                                                        class="color-select" type="radio">
+                                                    <span class="product-color-green"></span>
+                                                </label>
+                                                <label for="modal-product-color-light-green">
+                                                    <input name="modal-product-color"
+                                                        id="modal-product-color-light-green" class="color-select"
+                                                        type="radio">
+                                                    <span class="product-color-light-green"></span>
+                                                </label>
+                                                <label for="modal-product-color-blue">
+                                                    <input name="modal-product-color" id="modal-product-color-blue"
+                                                        class="color-select" type="radio">
+                                                    <span class="product-color-blue"></span>
+                                                </label>
+                                                <label for="modal-product-color-light-blue">
+                                                    <input name="modal-product-color"
+                                                        id="modal-product-color-light-blue" class="color-select"
+                                                        type="radio">
+                                                    <span class="product-color-light-blue"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Product Variable Single Item -->
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <div class="variable-single-item ">
+                                                <span>Quantity</span>
+                                                <div class="product-variable-quantity">
+                                                    <input min="1" max="100" value="1" type="number">
+                                                </div>
+                                            </div>
+
+                                            <div class="product-add-to-cart-btn">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
+                                                    Cart</a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- End Product Variable Area -->
+                                    <div class="modal-product-about-text">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste
+                                            laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam
+                                            in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel
+                                            recusandae</p>
+                                    </div>
+                                    <!-- Start  Product Details Social Area-->
+                                    <div class="modal-product-details-social">
+                                        <span class="title">SHARE THIS PRODUCT</span>
+                                        <ul>
+                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                            <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                            </li>
+                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+
+                                    </div> <!-- End  Product Details Social Area-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Modal Quickview cart -->
+
+  
+
+
+
+
+    
+
+    <script src="/public/asset/js/vendor/vendor.min.js"></script>
+    <script src="/public/asset/js/plugins/plugins.min.js"></script>
+
+
+    <script>
+        $('#edit-btn').click(function() {
+          // Get the user data
+          var name = '<%= userDatas.name %>';
+          var email = '<%= userDatas.email %>';
+          var phone = '<%= userDatas.phone %>';
+      
+          // Populate the form fields in the popup model
+          $('#inputNanme4').val(name);
+          $('#inputEmail4').val(email);
+          $('#inputPhone4').val(phone);
+      
+          // Show the popup model
+          $('#edit-modal').modal('show');
+        });
+      </script>
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Main JS -->
+    <script src="/public/asset/js/main.js"></script>
+</body>
+
+</html>

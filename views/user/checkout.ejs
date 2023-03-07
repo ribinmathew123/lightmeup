@@ -1,0 +1,304 @@
+<%- include('partials/header') %>
+
+
+
+    <div id="search" class="search-modal">
+        <button type="button" class="close">×</button>
+        <form>
+            <input type="search" placeholder="type keyword(s) here" />
+            <button type="submit" class="btn btn-lg btn-golden">Search</button>
+        </form>
+    </div>
+
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section breadcrumb-bg-color--golden">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="breadcrumb-title">Checkout</h3>
+                        <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/product-display">Shop</a></li>
+                                    <li class="active" aria-current="page">Checkout</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ...:::: End Breadcrumb Section:::... -->
+
+    <!-- <div>
+    </div> -->
+
+    <!-- ...:::: Start Checkout Section:::... -->
+    <div class="checkout-section">
+        <div class="container">
+            <div class="row">
+
+            </div>
+            <!-- Start User Details Checkout Form -->
+            <div class="checkout_form" data-aos="fade-up" data-aos-delay="400">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+
+
+                        <h3>Billing Details</h3>
+                        <div class="row">
+
+                            <div class="col-12" >
+
+                                <div class="select_form_select default-form-box">
+                                    <label for="countru_name">Your Address </label>
+                                    <select class="niceselect_option wide" name="cuntry" id="countru_name"
+                                        onchange="updateAddressDetails(this.value)">
+                                        <option value="2">Select Your Address</option>
+                                        <% if (userData.addressDetails && userData.addressDetails.length> 0) { %>
+                                            <% for (let i=0; i < userData.addressDetails.length; i++) { %>
+
+                                                <option value="<%= userData.addressDetails[i]._id %>">
+                                                    <%= userData.addressDetails[i].Fullname %>
+                                                        <%= userData.addressDetails[i].houseaddress %>
+                                                </option>
+
+                                                <% } %>
+                                                    <% } else { %>
+                                                        <p>No address selected</p>
+                                                        <% } %>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <!-- <form> -->
+
+                                <div class="col-12" >
+                                    <div class="default-form-box">
+                                        <label>Full Name <span>*</span></label>
+                                        <input type="text" id="name" name="name" value="">
+
+                                    </div>
+                                    <!-- Display other address details here -->
+
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="default-form-box">
+                                        <label>Company/Shop</label>
+                                        <input id="shop" name="shop" type="text">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="default-form-box">
+                                        <label>
+
+                                            State <span>*</span></label>
+                                        <input id="state" name="state" type="text" required>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="default-form-box">
+                                        <label>Town / City <span>*</span></label>
+                                        <input type="text" id="city" placeholder="city" name="city" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="default-form-box">
+                                        <label>Street Address <span>*</span></label>
+                                        <input name="street" id="street" type="text"  required>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="default-form-box">
+                                        <label>
+                                            Postal Code/ZIP <span>*</span></label>
+                                        <input type="number" id="code" name="code" required>
+                                    </div>
+                                </div>
+
+                                <!-- end postal code -->
+
+                                <div class="col-lg-6">
+                                    <div class="default-form-box">
+                                        <label> Mobile<span>*</span></label>
+                                        <input type="number" id="mobile" name="mobile" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="default-form-box">
+                                        <label> Email Address <span>*</span></label>
+                                        <input type="email" name="email" id="email" required>
+                                    </div>
+                                </div>
+
+                                <!-- end email -->
+
+
+                        </div>
+                    </div>
+
+
+                    <!--  -->
+                    <div class="col-lg-6 col-md-6">
+                        <!-- <form action="#"> -->
+                        <h3>Your order</h3>
+                        <div class="order_table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% var totalAmount=0 %>
+
+
+                                        <% cartList.forEach((item)=>{%>
+
+                                            <tr>
+                                                <td> <strong>
+                                                        <%=item.product.name%> × <%= item.cartItems.qty %>
+                                                    </strong></td>
+
+                                                <% var itemTotal=item.cartItems.qty * item.product.cost %>
+                                                    <% totalAmount +=itemTotal %>
+
+
+                                                        <td> $<%= itemTotal%>
+                                                        </td>
+                                            </tr>
+
+                                            <%})%>
+
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Cart Subtotal</th>
+                                        <td>$<%=totalAmount%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping</th>
+                                        <td><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr class="order_total">
+                                        <th>Order Total</th>
+                                        <td><strong>$ <span id="totalAmount"> 
+                                                    <%=totalAmount%>
+                                                </span> </strong></td>
+
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+
+
+                        <div class="payment_method">
+                            <div class="panel-default">
+
+
+                                
+
+                                <button class="btn btn-primary btn-sm btn-block my-2" onclick="cashOnDelivary('<%= userId %>')">Chash On
+                                    delivary</button>
+                            
+                                <button data-value="OnlinePayment" type="submit" onclick="onlinePayment('<%= userId %>')" class="btn btn-danger btn-sm btn-block my-2"  id="rzp-button1">Online Payment</button>
+
+
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Start User Details Checkout Form -->
+        </div>
+    </div><!-- ...:::: End Checkout Section:::... -->
+
+
+
+
+
+
+
+
+    </body>
+    <%- include('partials/footer') %>
+
+
+        <script>
+            async function updateAddressDetails(addressId) {
+                const res = await fetch('/getAddressDetails/' + addressId);
+                const data = await res.json();
+                console.log('Data retrieved from the server:', data);
+                if (data.message === 'Address not found') {
+                    document.querySelector('#name').value = "";
+                    document.querySelector('#shop').value = "";
+                    document.querySelector('#state').value = "";
+                    document.querySelector('#city').value = "";
+                    document.querySelector('#street').value = "";
+                    document.querySelector('#email').value = "";
+                    document.querySelector('#country').value = "";
+                    document.getElementById('#mobile').value = "";
+                    document.querySelector('#code').value = "";
+                } else {
+                    document.querySelector('#name').value = data.Fullname;
+                    document.querySelector('#shop').value = data.company;
+                    document.querySelector('#state').value = data.state;
+                    document.querySelector('#city').value = data.city;
+                    document.querySelector('#street').value = data.houseaddress;
+                    document.querySelector('#code').value = data.postal_code;
+                    document.querySelector('#email').value = data.email;
+                    document.getElementById('mobile').value = data.mobile;
+                }
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+
+
+        <script src="/public/asset/js/vendor/vendor.min.js"></script>
+        <script src="/public/asset/js/plugins/plugins.min.js"></script>
+
+        <!-- Main JS -->
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="/public/asset/js/main.js"></script>
+<script src="/public/asset/js/cart.js"> </script>
+
+
+
+
+
+        </html>
