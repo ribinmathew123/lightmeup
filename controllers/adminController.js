@@ -14,11 +14,9 @@ const { render } = require("ejs");
 const adminLoginpage = async (req, res,next) => {
   try {
     res.render("../views/admin/adminLogin.ejs");
-
   } catch (error) {
     next(error)
   }
-
 };
 
 

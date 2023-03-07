@@ -4,10 +4,7 @@ const admincontroller = require("../controllers/adminController");
 const sessions = require("express-session");
 const {adminSession,withOutAdminSession,} = require("../middleware/adminSession");
 
-router.get("/*", (req, res, next) => {
- console.log(req.session);
-  next();
-});
+
 const upload = require("../util/multer");
 const uploadbuffer = require("../util/multer");
 router.get("/login", withOutAdminSession, admincontroller.adminLoginpage);
