@@ -10,7 +10,7 @@ router.get("/*", (req, res, next) => {
 });
 const upload = require("../util/multer");
 const uploadbuffer = require("../util/multer");
-router.get("/login", withOutAdminSession, admincontroller.adminLoginpage);
+router.get("/login", admincontroller.adminLoginpage);
 router.get("/", adminSession, admincontroller.adminhomepageload);
 router.get("/logout", admincontroller.adminlogout);
 router.get("/user-list", adminSession, admincontroller.getuserlistpage);
