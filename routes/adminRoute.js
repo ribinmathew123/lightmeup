@@ -2,13 +2,10 @@ const express = require("express");
 const router = express.Router();
 const admincontroller = require("../controllers/adminController");
 const sessions = require("express-session");
-const {
-  adminSession,
-  withOutAdminSession,
-} = require("../middleware/adminSession");
+const {adminSession,withOutAdminSession,} = require("../middleware/adminSession");
 
 router.get("/*", (req, res, next) => {
-  console.log(req.session);
+ console.log(req.session);
   next();
 });
 const upload = require("../util/multer");
@@ -44,9 +41,5 @@ admincontroller.insertbanner
 router.get("/imageblock", adminSession, admincontroller.bannerblock);
 router.get("/get-month-wise-data",admincontroller.dashBoardDataGet)
 router.get("/get-order-status",admincontroller.dashBoardOrderStatus)
-
-
-
-
 
 module.exports = router;
