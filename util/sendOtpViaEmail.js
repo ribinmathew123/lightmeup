@@ -2,14 +2,22 @@ const { Promise } = require("mongoose");
 const nodemailer = require("nodemailer");
 
 const sendOtpViaEmail = (email, otp) => {
+  try {
+    
+ 
   return new Promise((resolve, reject) => {
+    try {
+      
+  
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
-        user: "ribinmathew4u@gmail.com",
-        pass: "bzojqkacnwgguplo",
+        user: "ribinmathew4you@gmail.com",
+        pass: "fskfiggcrmuhynnz",
+        
+
       },
     });
     const mailOptions = {
@@ -19,15 +27,28 @@ const sendOtpViaEmail = (email, otp) => {
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
+      try {
+        
+    
       if (error) {
         console.log("Email sending error:", error);
         reject(false);
       } else {
         resolve(true);
       }
-      res.render("../views/user");
+        // res.render("../views/user/otp.ejs");
+      } catch (error) {
+        console.log(error);
+      }
     });
+  } catch (error) {
+      
+  }
   });
+
+} catch (error) {
+    console.log(error);
+}
 };
 
 module.exports = sendOtpViaEmail;

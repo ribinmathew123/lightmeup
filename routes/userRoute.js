@@ -26,7 +26,7 @@ router.post("/userlogin", noSession, usercontroller.userVerification);
 
 router.post("/signup", noSession, usercontroller.insertUserData);
 
-router.post("/verify/:user_id", noSession, usercontroller.verify);
+ router.post("/verify/:user_id", noSession, usercontroller.verify);
 
 router.get("/user_profile", userSession, usercontroller.getuserProfilePage);
 
@@ -34,7 +34,7 @@ router.get("/edit-profile", userSession, usercontroller.getusereditProfilePage);
 
 router.get("/profile-address", userSession, usercontroller.getProfileAddressPage);
 
-router.get("/verify-otp/:user_id", noSession, usercontroller.verifyOtp);
+ router.get("/verify-otp/:user_id", noSession, usercontroller.verifyOtp);
 
 router.post("/verify-otp/:user_id", noSession, usercontroller.verifypassword);
 
@@ -44,7 +44,7 @@ router.get("/change-Password",userSession,usercontroller.getchangepasswordPage);
 
 router.post("/change-Password",userSession,usercontroller.postChangePasswordPage);
 
-router.post("/change-passwords/:user_id",usercontroller.postuserChangePasswordPage);
+ router.post("/change-passwords/:user_id",usercontroller.postuserChangePasswordPage);
 
 router.post("/address",userSession,usercontroller.postAddressPage);
 
