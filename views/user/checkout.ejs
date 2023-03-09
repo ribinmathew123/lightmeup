@@ -194,13 +194,15 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <input type="hidden" id="couponCode" readonly name="couponCode" value="<%=couponCode%>">
+
                                         <th>Shipping</th>
                                         <td><strong>$0.00</strong></td>
                                     </tr>
                                     <tr class="order_total">
                                         <th>Order Total</th>
                                         <td><strong>$ <span id="totalAmount"> 
-                                                    <%=totalAmount%>
+                                                    <%=discountAmount%>
                                                 </span> </strong></td>
 
 
@@ -214,8 +216,7 @@
                         <div class="payment_method">
                             <div class="panel-default">
 
-
-                                
+    
 
                                 <button class="btn btn-primary btn-sm btn-block my-2" onclick="cashOnDelivary('<%= userId %>')">Chash On
                                     delivary</button>

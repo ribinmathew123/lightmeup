@@ -168,6 +168,9 @@ const loadHome = async (req, res,next) => {
 next(error)  }
 };
 
+
+
+
 // resend otp
 
 const resendotppage = async (req, res,next) => {
@@ -394,12 +397,40 @@ next(error)  }
 
 // userProfile
 
+// const getuserProfilePage = async (req, res, next) => {
+//   try {
+  
+//     let email = req.session.userEmail;
+//     const userData = await User.findOne({ email: email });
+   
+//     const userId = userData._id;
+    
+//     const orderList = await orderModel.aggregate([
+//       {
+//         $lookup: {
+//           from: "products",
+//           localField: "orderItems.productId",
+//           foreignField: "_id",
+//           as: "product",
+//         },
+//       },
+//     ]);
+//     res.render("../views/user/userProfile", {
+//       login: req.session,
+//       userDatas: userData,orderList, 
+//       Dataid: userId,
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+
+
 const getuserProfilePage = async (req, res, next) => {
   try {
-  
-    let email = req.session.userEmail;
-    const userData = await User.findOne({ email: email });
-   
+    const email = req.session.userEmail;
+    const userData = await User.findOne({ email });
     const userId = userData._id;
     
     const orderList = await orderModel.aggregate([
@@ -411,10 +442,17 @@ const getuserProfilePage = async (req, res, next) => {
           as: "product",
         },
       },
+      {
+        $match: {
+          userId: mongoose.Types.ObjectId(userId),
+        },
+      },
     ]);
+
     res.render("../views/user/userProfile", {
       login: req.session,
-      userDatas: userData,orderList, 
+      userDatas: userData,
+      orderList,
       Dataid: userId,
     });
   } catch (error) {

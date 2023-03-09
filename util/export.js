@@ -39,6 +39,19 @@ const exportorder = async (req, res) => {
     let counter = 1;
     let totalof = 0;
     console.log("1111111111111");
+
+    const orderList = await order.aggregate([
+      {
+        $lookup: {
+          from: "products",
+          localField: "orderItems.productId",
+          foreignField: "_id",
+          as: "product",
+        },
+      },
+    ]);
+ console.log(orderList+"ooooooooooooooooo")
+
     const saledata = await order.find();
     saledata.map((sale) => {
       sale.s_no = counter;
@@ -54,8 +67,10 @@ const exportorder = async (req, res) => {
         });
       });
 
+
       // sale.items = sale.orderItems.map(item => `${item.name} (${item.
       //   quantity})`).join(', ');
+      
 
       sale.payment = sale.paymentMethod;
       sale.paymentStatus = sale.paymentStatus;

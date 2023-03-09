@@ -218,6 +218,7 @@ const blockcategory = async (req, res,next) => {
 
 
 
+
 //  blockcproduct,
 const blockproduct = async (req, res,next) => {
   try {
@@ -239,6 +240,9 @@ const blockproduct = async (req, res,next) => {
     next(error);
   }
 };
+
+
+
 
 // add to cart
 
@@ -276,6 +280,10 @@ const getAddToCartPage = async (req, res,next) => {
     next(error);
   }
 };
+
+
+
+
 
 
 
@@ -380,11 +388,16 @@ const postCartIncDec = async (req, res, next) => {
 
 
 
+
+
+
 // checkoutpage
 const getCheckoutPage = async (req, res,next) => {
   try {
-    const couponData = req.session.couponData;
+    console.log(req.query.discountedAmount);
     const totalAmount = req.session.totalAmount;
+    const discountAmount=req.query.discountedAmount
+    const couponCode=req.query.couponCode
 
     const email = req.session.userEmail;
     const user = await userdata.findOne({ email: email });
@@ -414,13 +427,18 @@ const getCheckoutPage = async (req, res,next) => {
       cartList: cartList,
       userData: user,
       userId: userId,
-      couponData: couponData,
-       totalAmount: totalAmount
-    });
+       totalAmount: totalAmount,
+       discountAmount:discountAmount,
+       couponCode:couponCode,
+          });
   } catch (error) {
     next(error);
   }
 };
+
+
+
+
 
 
 const postCheckoutPage = async (req, res,next) => {
@@ -531,98 +549,95 @@ const getinventoryManagement = async (req, res,next) => {
 
 
 
-//  const couponcheck = async (req, res,next) => {
-//    try{
-  
-//   const couponCode = req.body.couponCode;
-//   const user = await userdata.findOne({ email: req.session.userEmail });
-//   const userId = user._id;
-//   console.log(userId); 
-//   // const couponUsed = await userdata.findOne({coupondata: {$in: [couponCode]}});
-//   // console.log(couponUsed+"result");
-//   const couponUsed = await couponmodel.findOne({
-//           couponCode: couponCode,
-//           user: { $elemMatch: { userId: userId } },
-//         });
-    
 
 
-//   if (couponUsed) {
-//     console.log("data eeeeeeeeeee");
-//     res.status(400).send("Coupon has already been used.");
-//   } else {
-    
-//      const coupon = await couponmodel.findOne({ couponCode: couponCode });
+// const couponcheck = async (req, res, next) => {
+//   try {
+//     const couponCode = req.body.couponCode;
+//     console.log(req.body.couponCode);
 
-//      console.log('====================================');
-//      console.log( req.session.totalAmount);
-//      console.log('====================================');
+//     const user = await userdata.findOne({ email: req.session.userEmail });
+//     const userId = user._id;
+//     const couponUsed = await userdata.findOne({
+//       _id: userId,
+//       coupondata: {
+//         $elemMatch: {
+//           coupons: couponCode,
+//         },
+//       },
+//     });
 
-//      console.log('====================================');
-//      console.log(coupon);
-//      console.log('====================================');
-
-//     if (coupon.minimumAmount <= req.session.totalAmount) {
-//       console.log("mmmmmmmmmmmmmmmmmmmmmmmmm");
-//       // Apply the coupon and update the total amount in session
-//       const discountAmount = coupon.discount / 100;
-//       const totalDiscount = req.session.totalAmount * discountAmount;
-//       const newTotal = req.session.totalAmount - totalDiscount;
-//       req.session.coupon = coupon;
-//       req.session.totalAmount = newTotal;
-//       console.log('====================================');
-//       console.log(req.session.coupon);
-//       console.log(req.session.totalAmount);
-
-//       console.log('====================================');
-      
-//       // Return the updated total amount as a JSON object
-//       res.json({ totalAmount: newTotal });
-//     } else {
-//       res.status(400).send(`The minimum amount required for this coupon is ${coupon.minimumAmount}`);
+//     if (couponUsed) {
+//       return res.status(400).json("Coupon has already been used.");
 //     }
+
+//     const coupon = await couponmodel.findOne({ couponCode });
+
+//     if (!coupon) {
+//       return res.status(404).json("Coupon not found");
+//     }
+
+//     const total_amount = req.body.totalAmount;
+
+//     if (coupon.minimumAmount > total_amount) {
+//       return res
+//         .status(400)
+//         .json(`Minimum amount required for this coupon is ${coupon.minimumAmount}`);
+//     }
+
+//     return res.status(200).json(coupon);
+//   } catch (error) {
+//     next(error);
 //   }
-//  }catch(error){
-// next(error)
-//  }
 // };
 
-
-
-
-
-
-
-
-
-
-const couponcheck = async (req, res,next) => {
+const couponcheck = async (req, res, next) => {
   try {
     const couponCode = req.body.couponCode;
-    const total_amount = req.body.total_amount;
-    console.log(total_amount);
-
-
     const user = await userdata.findOne({ email: req.session.userEmail });
     const userId = user._id;
-    const couponUsed = await couponmodel.findOne({
-      couponCode: couponCode,
-      user: { $elemMatch: { userId: userId } },
+    const couponUsed = await userdata.findOne({
+      _id: userId,
+      coupondata: {
+        $elemMatch: {
+          coupons: couponCode,
+        },
+      },
     });
 
-    if (couponUsed) {
-      res.status(400).send("Coupon has already been used.");
-    } else {
-      const coupon = await couponmodel.findOne({
-        couponCode: couponCode,
-      });
 
-      res.status(200).json(coupon);
+    if (couponUsed) {
+      return res.status(400).json({ status: 400, message: "Coupon has already been used." });
     }
+    const coupon = await couponmodel.findOne({ couponCode });
+
+    if (!coupon) {
+      return res.status(404).json({ status: 404, message: "Coupon not found" });
+    }
+
+    const total_amount = req.body.totalAmount;
+
+    if (coupon.minimumAmount > total_amount) {
+      return res
+        .status(400)
+        .json({ status: 400, message: `Minimum amount required for this coupon is ${coupon.minimumAmount}` });
+    }
+
+    return res.status(200).json(coupon);
   } catch (error) {
     next(error);
   }
 };
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -708,6 +723,7 @@ const wishlistDisplyPage = async (req, res) => {
 
 const postOrderpage = async (req, res, next) => {
   try {
+
     const amount = req.body.amount;
     console.log(amount);
 
@@ -731,6 +747,9 @@ const postOrderpage = async (req, res, next) => {
 
 const paymentConfirm = async (req, res ,next) => {
   const userId = req.body.userId;
+  console.log(userId);
+  const couponCode=req.body.couponCode
+  console.log(couponCode+"gggggggggggggg");
   try {
     const razorpayInstance = new Razorpay({
       key_id: process.env.KEY_ID,
@@ -761,6 +780,14 @@ const paymentConfirm = async (req, res ,next) => {
           $unwind: "$product",
         },
       ]);
+
+      
+      await userdata.updateOne(
+        { _id: userId },
+        { $push: { coupondata: { coupons: req.body.couponCode } } }
+      );
+      
+
       const newOrder = new orderModel({
         orderItems: cartList.map((item) => ({
           productId: item.product._id,
@@ -778,6 +805,7 @@ const paymentConfirm = async (req, res ,next) => {
         mobile: req.body.mobile,
         email: req.body.email,
         paymentMethod: req.body.statusdata,
+
       });
 
       newOrder
@@ -803,6 +831,8 @@ const paymentConfirm = async (req, res ,next) => {
     next(error);
   }
 };
+
+
 
 const postproducteditpage = async (req, res, next) => {
   const product_id = req.params.id;

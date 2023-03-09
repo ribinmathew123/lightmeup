@@ -21,16 +21,20 @@
                 <div class="card-body p-md-5">
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-      
+
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><img style="height: 100px ;width: 100px;" src="/public/image/Light up me-logos_transparent.png" alt="">
+
+
                       Login </p>
+                      <small id="error" style="height: 20px; width:20px; color: red;"></small> <br>
 
                       <form action="/admin/login" method="post" class="mx-1 mx-md-4" >
                         
                         <div class="d-flex flex-row align-items-center mb-4">
                         
                           <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="form3Example1c" name="email" class="form-control" required />
+
+                            <input type="email" id="email" name="email" class="form-control"  onkeyup="emailValidation(this.values) " />
                             <label class="form-label" for="form3Example1c" >Email</label>
                           </div>
                         </div>
@@ -40,11 +44,13 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                         
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="form3Example4c" name="password"class="form-control" required />
+                            <input type="password" id="password" name="password" class="form-control"  onkeyup="passwordValidation(this.values)" />
+
+                            <!-- <input type="password" id="form3Example4c" name="password"class="form-control" required /> -->
                             <label class="form-label" for="form3Example4c" >Password</label>
                           </div>
                         </div>
-      
+  
       
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button type="submit" class="btn btn-primary btn-lg">Sign In</button>
@@ -66,5 +72,60 @@
           </div>
         </div>
       </section>
+      
+      <script>
+      const inputs = document.getElementsByTagName("input")
+      const error = document.getElementById("error")
+      const form = document.querySelector("form")
+  
+      form.addEventListener("submit", (e) => {
+          if (inputs[0].value?.length <= 0) {
+              e.preventDefault()
+              error.innerText = "enter the email"
+              return false
+          }
+          const regx = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+          if (!regx.test(inputs[0].value)) {
+              e.preventDefault()
+              error.innerText = "enter valid email"
+              return false
+          }
+          if (inputs[1].value?.length <= 0) {
+              e.preventDefault()
+              error.innerText = "enter the password"
+              return false
+          }
+          if ((inputs[1].value?.length >= 10) || (inputs[1].value?.length <= 4)) {
+              e.preventDefault()
+              error.innerText = "enter the password between 5 - 10"
+              return false
+          }
+      })
+      function emailValidation(email) {
+          console.log(email)
+          if (email?.length <= 0) {
+              error.innerText = "enter the email"
+              return
+          }
+          const regx = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+          if (!regx.test(email)) {
+              error.innerText = "enter the valid email"
+              return
+          }
+          error.innerText = ""
+      }
+      function passwordValidation() {
+          if (inputs[1].value?.length <= 0) {
+              error.innerText = "enter the password"
+              return
+          }
+          if ((inputs[1].value?.length >= 10) || (inputs[1].value?.length <= 5)) {
+              error.innerText = "enter the password between 5 - 10"
+              return false
+          }
+          error.innerText = ""
+      }
+</script> 
+
 </body>
 </html>
