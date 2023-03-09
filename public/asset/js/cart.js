@@ -244,9 +244,7 @@ function applyCoupon() {
               total_amount.innerText * discountAmount
             );
             const newTotal = Number(total_amount.innerText - totalDiscount);
-            discountamountDiv.value = Number(
-              total_amount.innerText - totalDiscount
-            );
+            discountamountDiv.value = totalDiscount
             total_amount.innerText = newTotal;
             couponStatus = true;
             Swal.fire({
@@ -293,9 +291,45 @@ function onlinePayment(userId) {
   const email = document.querySelector("#email").value;
   const mobile = document.getElementById("mobile").value;
   const couponCode = document.getElementById("couponCode").value;
-
   const status = document.getElementById("rzp-button1");
   const statusdata = status.getAttribute("data-value");
+
+
+  // Check if all required fields are filled
+  if (!name || !shop || !state || !city || !street || !code || !email || !mobile) {
+    swal({
+      title: "Error",
+      text: "Please fill in all required fields",
+      icon: "error",
+      button: "Okay",
+    });
+    return;
+  }
+
+  // Validate email address
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    swal({
+      title: "Error",
+      text: "Please enter a valid email address",
+      icon: "error",
+      button: "Okay",
+    });
+    return;
+  }
+
+  // Validate mobile number
+  const mobileRegex = /^\d{10}$/;
+  if (!mobileRegex.test(mobile)) {
+    swal({
+      title: "Error",
+      text: "Please enter a valid 10-digit mobile number",
+      icon: "error",
+      button: "Okay",
+    });
+    return;
+  }
+
 
   fetch("/product/order", {
     method: "post",
@@ -374,6 +408,14 @@ function onlinePayment(userId) {
 
 // cashondelivery
 
+
+
+
+
+
+
+
+
 function cashOnDelivary(userId) {
   const amount = document.querySelector("#totalAmount").innerText;
   const name = document.querySelector("#name").value;
@@ -385,6 +427,41 @@ function cashOnDelivary(userId) {
   const email = document.querySelector("#email").value;
   const mobile = document.getElementById("mobile").value;
   const couponCode = document.getElementById("couponCode").value;
+
+  // Check if all required fields are filled
+  if (!name || !shop || !state || !city || !street || !code || !email || !mobile) {
+    swal({
+      title: "Error",
+      text: "Please fill in all required fields",
+      icon: "error",
+      button: "Okay",
+    });
+    return;
+  }
+
+  // Validate email address
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    swal({
+      title: "Error",
+      text: "Please enter a valid email address",
+      icon: "error",
+      button: "Okay",
+    });
+    return;
+  }
+
+  // Validate mobile number
+  const mobileRegex = /^\d{10}$/;
+  if (!mobileRegex.test(mobile)) {
+    swal({
+      title: "Error",
+      text: "Please enter a valid 10-digit mobile number",
+      icon: "error",
+      button: "Okay",
+    });
+    return;
+  }
 
   const url = window.location.origin;
   console.log(url);

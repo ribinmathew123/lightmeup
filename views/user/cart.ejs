@@ -111,7 +111,7 @@
                                                             <%=item.product.name%>
                                                         </td>
 
-                                                        <td class="product-price">$<%=item.product.cost%>
+                                                        <td class="product-price"> &#8377; <%=item.product.cost%>
                                                         </td>
 
 
@@ -144,7 +144,7 @@
                                                         <!-- price section start -->
                                                         <% var price=item.cartItems.qty * item.product.cost %>
                                                             <% totalAmount +=price %>
-                                                                <td class="product_total">$<span
+                                                                <td class="product_total">  &#8377;<span
                                                                         id="total-price<%= item.cartItems.productId%>">
                                                                         <%= price%>
                                                                     </span>
@@ -228,28 +228,26 @@
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
                                     <p>Subtotal</p>
-                                    <p class="cart_amount">$ <span id="total-amount2">
+                                    <p class="cart_amount"> &#8377; <span id="total-amount2">
                                             <%= totalAmount%>
                                         </span></p>
 
                                 </div>
                                 <div class="cart_subtotal">
                                     <p>Shipping</p>
-                                    <p class="cart_amount"><span>Free</span> $00.00</p>
+                                    <p class="cart_amount"><span>Free</span>  &#8377; 00.00</p>
                                 </div>
                                 <a href="#">Calculate shipping</a>
                                     <div class="cart_subtotal">
                                         <p>discountedAmount</p>
                                         <input type="text" id="discountedAmount" readonly name="discountedAmount" value="0">
-                                        <!-- <p class="cart_amount">$ <span id="total-amount2"><%= totalAmount%></span></p> -->
                                     </div>
                                     <div class="cart_subtotal">
                                         <p>Total</p>
-                                        <p class="cart_amount">$ <span id="total-amount1">
+                                        <p class="cart_amount"> &#8377; <span id="total-amount1">
                                                 <%= totalAmount%>
                                             </span></p>
 
-                                        <!-- <p class="cart_amount">$ <span id="total-amount2"><%= totalAmount%></span></p> -->
                                     </div>
                                     <div class="checkout_btn">
                                         <button type="submit" class="btn btn-md btn-golden">

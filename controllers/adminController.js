@@ -427,8 +427,6 @@ const dashBoardDataGet = async (req, res) => {
   })
 
 }
-
-
 module.exports = {
   adminverification,
   adminLoginpage,

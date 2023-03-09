@@ -3,10 +3,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const productModel = require("../models/productModel");
 const userdata = require("../models/userModel");
-const cartmodel = require("../models/CartModel")
+const cartmodel = require("../models/CartModel");
 const orderModel = require("../models/orderModel");
 const couponmodel = require("../models/couponModel");
-const categorymodel=require("../models/categorymodel")
+const categorymodel = require("../models/categorymodel");
 const wishlistData = require("../models/wishlistModel");
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
@@ -21,13 +21,13 @@ const uploadSingleImage = multer({ storage }).single("images");
 const { cloudinaryConfig, uploader } = require("../config/cloudinary");
 const { spawn } = require("child_process");
 
-
-
 const postAddCategoryPage = async (req, res, next) => {
   try {
     let categoryName = req.body.catname.trim();
     categoryName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-    const existingCategory = await categorymodel.findOne({ name: categoryName });
+    const existingCategory = await categorymodel.findOne({
+      name: categoryName,
+    });
     if (existingCategory) {
       req.session.error = "Category already exists.";
       return res.redirect("/product/category");
@@ -40,38 +40,29 @@ const postAddCategoryPage = async (req, res, next) => {
   }
 };
 
-
-
-const getProductCategoryPage = (req, res,next) => {
-  try{
+const getProductCategoryPage = (req, res, next) => {
+  try {
     const catData = { name };
     const errorData = req.session.error;
     req.session.error = null;
     res.render("../views/admin/productcategory.ejs", { catData, errorData });
-  }
-  catch(error)
-  {
-    next(error)
+  } catch (error) {
+    next(error);
   }
 };
 
-
-
-const getAddProductPage = (req, res,next) =>
-categorymodel.find()
+const getAddProductPage = (req, res, next) =>
+  categorymodel
+    .find()
     .then((categories) => {
       const catData = { edit: false, categories, name: "Add Product" };
       res.render("../views/admin/product.ejs", { catData });
     })
     .catch((error) => {
-      next(error)
+      next(error);
     });
 
-
-
-
-
-const postproduct = async (req, res,next) => {
+const postproduct = async (req, res, next) => {
   try {
     let images = [];
     if (req.files) {
@@ -109,8 +100,7 @@ const postproduct = async (req, res,next) => {
   }
 };
 
-
-const productImageEdit = async (req, res,next) => {
+const productImageEdit = async (req, res, next) => {
   try {
     const public_id = req.params.public_id;
     const product_id = req.params.product_id;
@@ -143,8 +133,7 @@ const productImageEdit = async (req, res,next) => {
   }
 };
 
-
-const getcategorylist = async (req, res,next) => {
+const getcategorylist = async (req, res, next) => {
   try {
     categorymodel.find({}, (err, userdetails) => {
       if (err) {
@@ -160,11 +149,8 @@ const getcategorylist = async (req, res,next) => {
   }
 };
 
-
-
-
 const MAX_WORDS = 10;
-const getproductlistpage = async (req, res,next) => {
+const getproductlistpage = async (req, res, next) => {
   try {
     productModel.find({}, (err, userdetails) => {
       if (err) {
@@ -190,11 +176,8 @@ const getproductlistpage = async (req, res,next) => {
   }
 };
 
-
-
-
 //  blockcategory,
-const blockcategory = async (req, res,next) => {
+const blockcategory = async (req, res, next) => {
   try {
     const check = await categorymodel.findById({ _id: req.query.id });
 
@@ -215,12 +198,8 @@ const blockcategory = async (req, res,next) => {
   }
 };
 
-
-
-
-
 //  blockcproduct,
-const blockproduct = async (req, res,next) => {
+const blockproduct = async (req, res, next) => {
   try {
     const check = await productModel.findById({ _id: req.query.id });
 
@@ -241,12 +220,9 @@ const blockproduct = async (req, res,next) => {
   }
 };
 
-
-
-
 // add to cart
 
-const getAddToCartPage = async (req, res,next) => {
+const getAddToCartPage = async (req, res, next) => {
   try {
     const email = req.session.userEmail;
     let userid = await userdata.findOne({ email: email });
@@ -281,13 +257,7 @@ const getAddToCartPage = async (req, res,next) => {
   }
 };
 
-
-
-
-
-
-
-const cartDisplyPage = async (req, res,next) => {
+const cartDisplyPage = async (req, res, next) => {
   try {
     const email = req.session.userEmail;
     const user = await userdata.findOne({ email: email });
@@ -318,15 +288,12 @@ const cartDisplyPage = async (req, res,next) => {
       cartList: cartList,
       userId: req.session.userEmail,
     });
-  } catch (error)
-   {
+  } catch (error) {
     next(error);
-   }
+  }
 };
 
-
-
-const removeCartItemPage = async (req, res,next) => {
+const removeCartItemPage = async (req, res, next) => {
   try {
     const id = req.query.id;
     cartmodel.updateOne(
@@ -347,8 +314,6 @@ const removeCartItemPage = async (req, res,next) => {
     res.status(500).send({ message: "Failed to remove item" });
   }
 };
-
-
 
 const postCartIncDec = async (req, res, next) => {
   try {
@@ -386,18 +351,13 @@ const postCartIncDec = async (req, res, next) => {
   }
 };
 
-
-
-
-
-
 // checkoutpage
-const getCheckoutPage = async (req, res,next) => {
+const getCheckoutPage = async (req, res, next) => {
   try {
     console.log(req.query.discountedAmount);
-    const totalAmount = req.session.totalAmount;
-    const discountAmount=req.query.discountedAmount
-    const couponCode=req.query.couponCode
+    // let totalAmount = req.session.totalAmount;
+    // let discountAmount = req.query.discountedAmount;
+    const couponCode = req.query.couponCode;
 
     const email = req.session.userEmail;
     const user = await userdata.findOne({ email: email });
@@ -423,25 +383,21 @@ const getCheckoutPage = async (req, res,next) => {
         $unwind: "$product",
       },
     ]);
+    let total = req.session?.totalAmount;
     res.render("../views/user/checkout.ejs", {
       cartList: cartList,
       userData: user,
       userId: userId,
-       totalAmount: totalAmount,
-       discountAmount:discountAmount,
-       couponCode:couponCode,
-          });
+      totalAmount: total,
+      discountAmount: req.query?.discountedAmount,
+      couponCode: couponCode,
+    });
   } catch (error) {
     next(error);
   }
 };
 
-
-
-
-
-
-const postCheckoutPage = async (req, res,next) => {
+const postCheckoutPage = async (req, res, next) => {
   try {
     const email = req.session.userEmail;
     const user = await userdata.findOne({ email: email });
@@ -478,9 +434,7 @@ const postCheckoutPage = async (req, res,next) => {
   }
 };
 
-
-
-const getorderManagement = async (req, res,next) => {
+const getorderManagement = async (req, res, next) => {
   try {
     const orderList = await orderModel.aggregate([
       {
@@ -499,9 +453,6 @@ const getorderManagement = async (req, res,next) => {
     next(error);
   }
 };
-
-
-
 
 // order status changing
 const orderStatusChanging = async (req, res, next) => {
@@ -523,9 +474,7 @@ const orderStatusChanging = async (req, res, next) => {
   }
 };
 
-
-
-const getinventoryManagement = async (req, res,next) => {
+const getinventoryManagement = async (req, res, next) => {
   try {
     const orderList = await orderModel.aggregate([
       {
@@ -547,50 +496,6 @@ const getinventoryManagement = async (req, res,next) => {
 
 
 
-
-
-
-
-// const couponcheck = async (req, res, next) => {
-//   try {
-//     const couponCode = req.body.couponCode;
-//     console.log(req.body.couponCode);
-
-//     const user = await userdata.findOne({ email: req.session.userEmail });
-//     const userId = user._id;
-//     const couponUsed = await userdata.findOne({
-//       _id: userId,
-//       coupondata: {
-//         $elemMatch: {
-//           coupons: couponCode,
-//         },
-//       },
-//     });
-
-//     if (couponUsed) {
-//       return res.status(400).json("Coupon has already been used.");
-//     }
-
-//     const coupon = await couponmodel.findOne({ couponCode });
-
-//     if (!coupon) {
-//       return res.status(404).json("Coupon not found");
-//     }
-
-//     const total_amount = req.body.totalAmount;
-
-//     if (coupon.minimumAmount > total_amount) {
-//       return res
-//         .status(400)
-//         .json(`Minimum amount required for this coupon is ${coupon.minimumAmount}`);
-//     }
-
-//     return res.status(200).json(coupon);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 const couponcheck = async (req, res, next) => {
   try {
     const couponCode = req.body.couponCode;
@@ -605,9 +510,10 @@ const couponcheck = async (req, res, next) => {
       },
     });
 
-
     if (couponUsed) {
-      return res.status(400).json({ status: 400, message: "Coupon has already been used." });
+      return res
+        .status(400)
+        .json({ status: 400, message: "Coupon has already been used." });
     }
     const coupon = await couponmodel.findOne({ couponCode });
 
@@ -618,9 +524,10 @@ const couponcheck = async (req, res, next) => {
     const total_amount = req.body.totalAmount;
 
     if (coupon.minimumAmount > total_amount) {
-      return res
-        .status(400)
-        .json({ status: 400, message: `Minimum amount required for this coupon is ${coupon.minimumAmount}` });
+      return res.status(400).json({
+        status: 400,
+        message: `Minimum amount required for this coupon is ${coupon.minimumAmount}`,
+      });
     }
 
     return res.status(200).json(coupon);
@@ -628,26 +535,6 @@ const couponcheck = async (req, res, next) => {
     next(error);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // wishList
 
@@ -677,8 +564,6 @@ const userAddToWishlist = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
-
-
 
 // wishlist Display
 const wishlistDisplyPage = async (req, res) => {
@@ -719,11 +604,8 @@ const wishlistDisplyPage = async (req, res) => {
   });
 };
 
-
-
 const postOrderpage = async (req, res, next) => {
   try {
-
     const amount = req.body.amount;
     console.log(amount);
 
@@ -739,17 +621,18 @@ const postOrderpage = async (req, res, next) => {
     res.json({ success: true, order, amount });
   } catch (error) {
     next(error);
-    res.status(500).json({ success: false, message: "An error occurred while creating the order." });
+    res.status(500).json({
+      success: false,
+      message: "An error occurred while creating the order.",
+    });
   }
 };
 
-
-
-const paymentConfirm = async (req, res ,next) => {
+const paymentConfirm = async (req, res, next) => {
   const userId = req.body.userId;
   console.log(userId);
-  const couponCode=req.body.couponCode
-  console.log(couponCode+"gggggggggggggg");
+  const couponCode = req.body.couponCode;
+  console.log(couponCode + "gggggggggggggg");
   try {
     const razorpayInstance = new Razorpay({
       key_id: process.env.KEY_ID,
@@ -781,12 +664,10 @@ const paymentConfirm = async (req, res ,next) => {
         },
       ]);
 
-      
       await userdata.updateOne(
         { _id: userId },
         { $push: { coupondata: { coupons: req.body.couponCode } } }
       );
-      
 
       const newOrder = new orderModel({
         orderItems: cartList.map((item) => ({
@@ -805,7 +686,6 @@ const paymentConfirm = async (req, res ,next) => {
         mobile: req.body.mobile,
         email: req.body.email,
         paymentMethod: req.body.statusdata,
-
       });
 
       newOrder
@@ -831,8 +711,6 @@ const paymentConfirm = async (req, res ,next) => {
     next(error);
   }
 };
-
-
 
 const postproducteditpage = async (req, res, next) => {
   const product_id = req.params.id;

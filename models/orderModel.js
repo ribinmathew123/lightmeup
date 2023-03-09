@@ -63,28 +63,34 @@ const orderSchema = new mongoose.Schema({
     },
 
     state: {
-      type: String,
+      type: String,  
+      
 
     },
     city: {
       type: String,
 
+
     },
     street: {
-      type: String,
+      type: String,  
+
 
     },
    
     code: {
-      type: Number,
+      type: Number,    
+
 
     },
     mobile: {
-      type: Number,
+      type: Number,   
+
 
     },
     email: {
-      type: String,
+      type: String,   
+
     },
 
 

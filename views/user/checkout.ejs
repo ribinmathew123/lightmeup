@@ -179,7 +179,7 @@
                                                     <% totalAmount +=itemTotal %>
 
 
-                                                        <td> $<%= itemTotal%>
+                                                        <td>  &#8377; <%= itemTotal%>
                                                         </td>
                                             </tr>
 
@@ -190,19 +190,19 @@
                                 <tfoot>
                                     <tr>
                                         <th>Cart Subtotal</th>
-                                        <td>$<%=totalAmount%>
+                                        <td> &#8377; <%=totalAmount%>
                                         </td>
                                     </tr>
                                     <tr>
                                         <input type="hidden" id="couponCode" readonly name="couponCode" value="<%=couponCode%>">
 
                                         <th>Shipping</th>
-                                        <td><strong>$0.00</strong></td>
+                                        <td><strong> &#8377; 0.00</strong></td>
                                     </tr>
                                     <tr class="order_total">
                                         <th>Order Total</th>
-                                        <td><strong>$ <span id="totalAmount"> 
-                                                    <%=discountAmount%>
+                                        <td><strong> &#8377; <span id="totalAmount"> 
+                                                    <%=totalAmount-discountAmount%>
                                                 </span> </strong></td>
 
 
