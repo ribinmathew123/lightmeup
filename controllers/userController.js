@@ -432,6 +432,7 @@ const getuserProfilePage = async (req, res, next) => {
     const email = req.session.userEmail;
     const userData = await User.findOne({ email });
     const userId = userData._id;
+    console.log(userId);
     
     const orderList = await orderModel.aggregate([
       {
@@ -447,13 +448,14 @@ const getuserProfilePage = async (req, res, next) => {
           userId: mongoose.Types.ObjectId(userId),
         },
       },
-    ]);
+    ]).sort({createdAt: -1})
 
     res.render("../views/user/userProfile", {
       login: req.session,
       userDatas: userData,
       orderList,
       Dataid: userId,
+      
     });
   } catch (error) {
     next(error);
@@ -461,6 +463,46 @@ const getuserProfilePage = async (req, res, next) => {
 };
 
 
+
+
+
+// const getuserProfilePage = async (req, res, next) => {
+//   try {
+    
+//     let email = req.session.userEmail;
+//     const userData = await User.findOne({ email: email });
+   
+//     const userId = userData._id;
+    
+//     const orderList = await orderModel.aggregate([
+//       {
+//          $unwind: "$orderItems",
+//       },
+//      {
+//      $lookup: {
+//           from: "products",
+//             localField: "orderItems.productId",
+//            foreignField: "_id",
+//            as: "product",
+//          },
+//        },
+//       {
+//          $unwind: "$product",
+//        },
+//     ]);
+  
+//     console.log('====================================');
+//     console.log(orderList);
+//     console.log('====================================');
+//     res.render("../views/user/userProfile", {
+//       login: req.session,
+//       userDatas: userData,orderList, 
+//       Dataid: userId,
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+//   };
 
 
 
@@ -720,6 +762,7 @@ const postCashonDelivery = async (req, res) => {
       mobile: req.body.mobile,
       email: req.body.email,
       paymentMethod: "COD",
+      userId:userId
     });
     await newOrder.save();
     for (const item of cartList) {
@@ -871,9 +914,6 @@ const getUserPasswordChange =async( req,res)=>
     
   }
 }
-
-
-
 
 
 

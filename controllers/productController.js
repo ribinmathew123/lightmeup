@@ -21,6 +21,7 @@ const uploadSingleImage = multer({ storage }).single("images");
 const { cloudinaryConfig, uploader } = require("../config/cloudinary");
 const { spawn } = require("child_process");
 
+
 const postAddCategoryPage = async (req, res, next) => {
   try {
     let categoryName = req.body.catname.trim();
@@ -52,8 +53,7 @@ const getProductCategoryPage = (req, res, next) => {
 };
 
 const getAddProductPage = (req, res, next) =>
-  categorymodel
-    .find()
+  categorymodel.find()
     .then((categories) => {
       const catData = { edit: false, categories, name: "Add Product" };
       res.render("../views/admin/product.ejs", { catData });
@@ -445,7 +445,7 @@ const getorderManagement = async (req, res, next) => {
           as: "product",
         },
       },
-    ]);
+    ]).sort({createdAt: -1})
     res.render("../views/admin/adminOrderManagement.ejs", {
       orderList,
     });
@@ -686,6 +686,9 @@ const paymentConfirm = async (req, res, next) => {
         mobile: req.body.mobile,
         email: req.body.email,
         paymentMethod: req.body.statusdata,
+        userId:userId
+
+
       });
 
       newOrder
