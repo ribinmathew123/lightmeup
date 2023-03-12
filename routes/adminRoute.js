@@ -27,14 +27,14 @@ router.post("/coupon-Edit", adminSession, admincontroller.postCouponEditPage);
 
 router.get("/coupon-Delete", adminSession, admincontroller.getCouponDeletPage);
 
-// display bannermanage
 router.get("/adminbanner", adminSession, admincontroller.banner);
+router.post('/adminbanner',adminSession,admincontroller.uploadSingleImage,admincontroller.insertbanner)
 
-// addbanner
-router.post("/adminbanner",upload.single("image"),  // it is for add multiple image for single image changr array to single
-admincontroller.insertbanner
-);
-// banner block
+
+// router.post("/adminbanner",upload.single("image"),admincontroller.insertbanner);
+
+
+
 router.get("/imageblock", adminSession, admincontroller.bannerblock);
 router.get("/get-month-wise-data",admincontroller.dashBoardDataGet)
 router.get("/get-order-status",admincontroller.dashBoardOrderStatus)

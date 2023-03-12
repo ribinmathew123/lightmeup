@@ -19,6 +19,7 @@ const path = require("path");
 const uploadMiddleware = multer({ storage }).array("images", 10);
 const uploadSingleImage = multer({ storage }).single("images");
 const { cloudinaryConfig, uploader } = require("../config/cloudinary");
+
 const { spawn } = require("child_process");
 
 
@@ -100,6 +101,9 @@ const postproduct = async (req, res, next) => {
   }
 };
 
+
+
+
 const productImageEdit = async (req, res, next) => {
   try {
     const public_id = req.params.public_id;
@@ -133,6 +137,8 @@ const productImageEdit = async (req, res, next) => {
   }
 };
 
+
+
 const getcategorylist = async (req, res, next) => {
   try {
     categorymodel.find({}, (err, userdetails) => {
@@ -150,6 +156,7 @@ const getcategorylist = async (req, res, next) => {
 };
 
 const MAX_WORDS = 10;
+
 const getproductlistpage = async (req, res, next) => {
   try {
     productModel.find({}, (err, userdetails) => {
@@ -176,6 +183,9 @@ const getproductlistpage = async (req, res, next) => {
   }
 };
 
+
+
+
 //  blockcategory,
 const blockcategory = async (req, res, next) => {
   try {
@@ -197,6 +207,8 @@ const blockcategory = async (req, res, next) => {
     next(error);
   }
 };
+
+
 
 //  blockcproduct,
 const blockproduct = async (req, res, next) => {
@@ -286,7 +298,8 @@ const cartDisplyPage = async (req, res, next) => {
 
     res.render("../views/user/cart.ejs", {
       cartList: cartList,
-      userId: req.session.userEmail,
+      userId: req.session.userEmail, 
+      ses:req.session.userEmail , user:user
     });
   } catch (error) {
     next(error);
@@ -387,10 +400,13 @@ const getCheckoutPage = async (req, res, next) => {
     res.render("../views/user/checkout.ejs", {
       cartList: cartList,
       userData: user,
+      user:user,
       userId: userId,
       totalAmount: total,
       discountAmount: req.query?.discountedAmount,
       couponCode: couponCode,
+     
+      ses:req.session.userEmail 
     });
   } catch (error) {
     next(error);

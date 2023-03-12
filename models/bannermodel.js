@@ -2,9 +2,11 @@ const mongoose=require('mongoose');
 
 const { Schema } = mongoose;
 const bannerSchema = new Schema({
-    bannertext:{type:String},
+    bannerName:{type:String},
+    bannerOffer:{type:String},
+
     image:{
-        type:String //for add multiple image other wise type is string
+        type:String 
     },
     status:{
         type:Boolean,

@@ -11,7 +11,7 @@
 
 
 
-    <title>Homestyle</title>
+    <title>LightMeUp</title>
 
 
     <meta name="description" content="Shop powered by PrestaShop">
@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="/public/asset/css/vendor/vendor.min.css" />
 
-    <link rel="stylesheet" href="/public/asset/css/plugins/plugins.min.css" />
+    <!-- <link rel="stylesheet" href="/public/asset/css/plugins/plugins.min.css" /> -->
     <link rel="stylesheet" href="/public/asset/css/style.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -50,7 +50,7 @@
 
 
 
-    <style type="text/css">
+    <!-- <style type="text/css">
         #posnewsletterpopup {
             width: 100%;
             background-repeat: no-repeat;
@@ -60,7 +60,7 @@
             background-image: url("/demo4/img/cms/dec-popup.jpg");
             background-position: center right;
         }
-    </style>
+    </style> -->
 
 
     <!-- <style type="text/css">
@@ -209,17 +209,84 @@
                             ><i class="fas fa-user me-1 text-gray fw-normal"></i
                             ></a
                           > -->
-                                <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
-                                    <a class="dropdown-item border-0 transition-link" href="/userlogin">Login</a>
-                                    <a class="dropdown-item border-0 transition-link" href="/logout">Log out</a>
-                                </div>
+                                <!-- <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"> -->
+
+                                   
+
+                                    <!-- <a class="dropdown-item border-0 transition-link" href="/userlogin">Login</a> -->
+                                 
+                                    <!-- <a class="dropdown-item border-0 transition-link" href="/logout">Log out</a> -->
+
+                                <!-- </div> -->
 
 
-                                <li>
+
+                                <!-- Button to open the offcanvas menu -->
+                                 <li>
                                     <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
                                         <i class="icon-menu"></i>
                                     </a>
-                                </li>
+                                </li> 
+
+
+
+
+                                <!-- Offcanvas menu -->
+                                <div id="offcanvas-about"
+                                    class="offcanvas offcanvas-rightside offcanvas-mobile-about-section">
+                                    <div class="offcanvas-header text-right">
+                                        <button class="offcanvas-close">
+                                            <i class="ion-android-close"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="mobile-contact-info">
+                                        <div class="logo">
+                                        </div>
+                                        <% if (ses) { %>
+                                            <p style="color:white ; font: 3em sans-serif;">Welcome </p> <h1 style="color:rgb(47, 240, 13) ; font: 2em serif;"><%= user.name %></h1><br>
+                                            <a style="color:white ; font: 1em sans-serif;" class="dropdown-item border-0 transition-link" href="/logout">Log out</a>
+                                          <% } else { %>
+                                            <a style="color:white ; font: 1em sans-serif;" class="dropdown-item border-0 transition-link" href="/userlogin">Login</a>
+                                          <% } %>
+                                          
+
+
+                                          <div class="mobile-contact-info">
+                                            <div class="logo">
+                                                <!-- <img src="/public/image/lightmeup.png" alt=""> -->
+                                            </div>
+
+                                        <address class="address">
+
+                                            <span>Admin: Ribin Mathew.</span>
+                                            <span>Call Us: 0123456789, 0123456789</span>
+                                            <span>Email: ribin@gmail.com</span>
+                                        </address>
+
+                                        <!-- <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
+                                            <a class="dropdown-item border-0 transition-link"
+                                                href="/userlogin">Login</a>
+                                            <a class="dropdown-item border-0 transition-link" href="/logout">Log out</a>
+                                        </div> -->
+                                        <ul class="social-link">
+                                            <li>
+                                                <a></i></a>
+                                            </li>
+                                            <li>
+                                                <a><i class=""></i></a>
+                                            </li>
+                                            <li>
+                                                <a><i class=""></i></a>
+                                            </li>
+                                            <li>
+                                                <a><i class=""></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> 
+
+
                             </ul>
                             <!-- End Header Action Link -->
                         </div>
@@ -310,47 +377,11 @@
                                                         <div id="menu-icon"><i class="icon-rt-bars-solid"></i></div>
                                                         <div class="menu-mobile-content" id="mobile_menu_wrapper">
                                                             <div class="language-selector dropdown js-dropdown">
-                                                                <!-- <button data-toggle="dropdown" class="btn-unstyle"
-                                                                    aria-haspopup="true" aria-expanded="false"
-                                                                    aria-label="Language dropdown">
-                                                                    <img src="public/image1.jpg" alt="" width="16"
-                                                                        height="11" />
-                                                                    <span class="expand-more">English</span>
-                                                                    <i class="icon-rt-arrow-down"></i>
-
-                                                                </button> -->
-
-                                                                <!-- <header end 2> -->
 
 
-
-
-
-
-                                                                <!-- <ul class="dropdown-menu" aria-labelledby="language-selector-label">
-                                                        <li class="current">
-                                                            <a href="https://ecolife.posthemes.com/demo4/decoration3/en/" class="dropdown-item" data-iso-code="en"><img src="https://ecolife.posthemes.com/demo4/decoration3/img/l/1.jpg" alt="" width="16" height="11" />English</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://ecolife.posthemes.com/demo4/decoration3/fr/" class="dropdown-item" data-iso-code="fr"><img src="https://ecolife.posthemes.com/demo4/decoration3/img/l/2.jpg" alt="" width="16" height="11" />Français</a>
-                                                        </li>
-                                                    </ul> -->
                                                             </div>
                                                             <div class="currency-selector dropdown js-dropdown">
-                                                                <!-- <button data-toggle="dropdown" class="btn-unstyle"
-                                                                    aria-haspopup="true" aria-expanded="false"
-                                                                    aria-label="Currency dropdown">
-                                                                    <span class="expand-more _gray-darker">USD $</span>
-                                                                    <i class="icon-rt-arrow-down"></i>
-                                                                </button> -->
-                                                                <!-- <ul class="dropdown-menu" aria-labelledby="currency-selector-label">
-                                                        <li>
-                                                            <a title="Euro" rel="nofollow" href="https://ecolife.posthemes.com/demo4/decoration3/en/?SubmitCurrency=1&amp;id_currency=2" class="dropdown-item">EUR €</a>
-                                                        </li>
-                                                        <li class="current">
-                                                            <a title="US Dollar" rel="nofollow" href="https://ecolife.posthemes.com/demo4/decoration3/en/?SubmitCurrency=1&amp;id_currency=1" class="dropdown-item">USD $</a>
-                                                        </li>
-                                                    </ul> -->
+
                                                             </div>
 
                                                             <div class="menu-close">
@@ -399,219 +430,16 @@
 
 
 
-
-
-
-
-                                                                        <!-- <li class="menu-item menu-item7  hasChild ">
-
-                                                                            <a href="javascript:void(0)">
-
-                                                                                <span>Features</span>
-                                                                                <span class="menu-subtitle">Hot</span>
-                                                                            </a>
-
-                                                                            <span class="icon-drop-mobile"><i
-                                                                                    class="material-icons add">add
-                                                                                </i><i
-                                                                                    class="material-icons remove">remove
-                                                                                </i></span>
-                                                                            <div class="pos-sub-menu menu-dropdown ">
-                                                                                <div class="pos-sub-inner">
-                                                                                    <div class="pos-menu-row ">
-                                                                                        <div class="pos-menu-col ">
-                                                                                            <h4 class="column_title">
-                                                                                                Catalog products</h4>
-                                                                                            <span
-                                                                                                class="icon-drop-mobile"><i
-                                                                                                    class="material-icons add">add
-                                                                                                </i><i
-                                                                                                    class="material-icons remove">remove
-                                                                                                </i></span> -->
-                                                                        <!-- <ul class="ul-column column_dropdown ">
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/2-home?gt=1">Product type 1</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/2-home?gt=2">Product type 2</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/2-home?gt=3">Product type 3</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/2-home?gt=4">Product type 4</a>
-
-                                                                                    </li>
-                                                                                </ul> -->
-                                                                        <!-- </div>
-                                                                            <div class="pos-menu-col ">
-                                                                                <h4 class="column_title">Product Gallery</h4>
-                                                                                <span class="icon-drop-mobile"><i class="material-icons add">add </i><i class="material-icons remove">remove </i></span>
-                                                                                <ul class="ul-column column_dropdown ">
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html">Horizontal slider</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?pt=1">Vertical slider</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?pplayout=2&amp;pl=1">Grid (1 column)</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?pplayout=2&amp;pl=2">Grid (2 columns)</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?pplayout=3&amp;pt=2">Showcase style</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?pplayout=4&amp;tb=2&amp;pp=3">Full width</a>
-
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="pos-menu-col ">
-                                                                                <h4 class="column_title">Filters</h4>
-                                                                                <span class="icon-drop-mobile"><i class="material-icons add">add </i><i class="material-icons remove">remove </i></span>
-                                                                                <ul class="ul-column column_dropdown ">
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/2-home">Filter sidebar </a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/2-home?ft=2&amp;pr=2">Filter top</a>
-
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="pos-menu-col ">
-                                                                                <h4 class="column_title">Product Details</h4>
-                                                                                <span class="icon-drop-mobile"><i class="material-icons add">add </i><i class="material-icons remove">remove </i></span>
-                                                                                <ul class="ul-column column_dropdown ">
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html">Horizontal tab </a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?tb=1">Vertical tab</a>
-
-                                                                                    </li>
-                                                                                    <li class="submenu-item ">
-                                                                                        <a href="/demo4/decoration3/en/home/3-fresh-orange-nagpur.html?tb=2">Accordion</a>
-
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div> -->
-
-                                                                        <!-- 
-                                                                                            <div class="pos-menu-row ">
-                                                                                                <div
-                                                                                                    class="pos-menu-col ">
-                                                                                                    <ul
-                                                                                                        class="ul-column ">
-                                                                                                        <li
-                                                                                                            class="submenu-item hidden-mobile">
-                                                                                                            <a href="#"><img
-                                                                                                                    src="/public/image/banner-menu.jpg"
-                                                                                                                    alt="" /></a>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                        </li> -->
                                                                         <li class="menu-item menu-item19   hasChild">
 
-                                                                            <!-- <a href="https://ecolife.posthemes.com/demo4/decoration3/en/158-home-decor"> -->
 
-                                                                            <!-- <span>Home decor</span>
-                                                                            </a>
-                                                                            <span class="icon-drop-mobile"><i
-                                                                                    class="material-icons add">add</i><i
-                                                                                    class="material-icons remove">remove
-                                                                                </i></span>
-                                                                            <div
-                                                                                class="menu-dropdown cat-drop-menu menu_slidedown">
-                                                                                <ul class="pos-sub-inner"> -->
-                                                                            <!-- <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/159-lighting" class=""><span>Lighting</span></a><span class="icon-drop-mobile"><i class="material-icons add">add</i><i class="material-icons remove">remove </i></span> -->
-                                                                            <!-- <div
-                                                                                        class="menu-dropdown cat-drop-menu "> -->
-                                                                            <!-- <ul class="pos-sub-inner">
-                                                                                    <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/163-lamp-table" class=""><span>Lamp Table</span></a></li>
-                                                                                    <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/164-lamp-wall" class=""><span>Lamp Wall</span></a></li>
-                                                                                    <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/165-novelty-lighting" class=""><span>Novelty Lighting</span></a></li>
-                                                                                    <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/166-lighting-accessories" class=""><span>Lighting Accessories</span></a></li>
-                                                                                    <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/167-ceiling-light-fixtures" class=""><span>Ceiling Light Fixtures</span></a></li>
-                                                                                </ul> -->
-                                                                            <!-- </div>
-                                                                        </li>
-                                                                        <li><a href="" class=""><span>Wall
-                                                                                    art</span></a><span
-                                                                                class="icon-drop-mobile"><i
-                                                                                    class="material-icons add">add</i><i
-                                                                                    class="material-icons remove">remove
-                                                                                </i></span>
-                                                                            <div class="menu-dropdown cat-drop-menu "> -->
-                                                                            <!-- <ul class="pos-sub-inner">
-                                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/168-drawings" class=""><span>Drawings</span></a></li>
-                                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/169-mixed-media" class=""><span>Mixed Media</span></a></li>
-                                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/170-paintings" class=""><span>Paintings</span></a></li>
-                                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/171-photographs" class=""><span>Photographs</span></a></li>
-                                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/172-posters-prints" class=""><span>Posters & Prints</span></a></li>
-                                                                        </ul> -->
-                                                                            <!-- </div>
-                                                                        </li>
-                                                                        <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/161-mirrors"
-                                                                                class=""><span>Mirrors</span></a><span
-                                                                                class="icon-drop-mobile"><i
-                                                                                    class="material-icons add">add</i><i
-                                                                                    class="material-icons remove">remove
-                                                                                </i></span>
-                                                                            <div class="menu-dropdown cat-drop-menu "> -->
-                                                                            <!-- <ul class="pos-sub-inner">
-                                                                <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/173-bathroom-mirrors" class=""><span>Bathroom Mirrors</span></a></li>
-                                                                <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/174-floor-full-mirrors" class=""><span>Floor & Full Mirrors</span></a></li>
-                                                                <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/175-mirror-sets" class=""><span>Mirror Sets</span></a></li>
-                                                                <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/176-wall-mounted-mirrors" class=""><span>Wall-Mounted Mirrors</span></a></li>
-                                                            </ul> -->
                                                                 </div>
-                                                                <!-- </li> -->
-                                                                <!-- <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/162-accessories"
-                                                                                class=""><span></span></a><span
-                                                                                class="icon-drop-mobile"><i
-                                                                                    class="material-icons add">add</i><i
-                                                                                    class="material-icons remove">remove
-                                                                                </i></span>
-                                                                            <div class="menu-dropdown cat-drop-menu "> -->
-                                                                <!-- <ul class="pos-sub-inner">
-                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/177-pillows" class=""><span>Pillows</span></a></li>
-                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/178-planters" class=""><span>Planters</span></a></li>
-                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/179-throws" class=""><span>Throws</span></a></li>
-                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/180-candles" class=""><span>Candles</span></a></li>
-                                                            <li><a href="https://ecolife.posthemes.com/demo4/decoration3/en/181-floating-shelves" class=""><span>Floating Shelves</span></a></li>
-                                                        </ul> -->
+
                                                             </div>
-                                                            <!-- </li> -->
                                                             </ul>
                                                         </div>
                                                         </li>
-                                                        <!-- <li class="menu-item menu-item20   ">
 
-                                                                    <a href="">
-
-                                                                        <span></span>
-                                                                    </a>
-                                                                </li> -->
                                                         </ul>
 
                                                     </div>
@@ -620,156 +448,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div data-id="qlbuira"
-                                                class="elementor-element elementor-element-qlbuira topbar pewidth-inline elementor-widget elementor-widget-posSearch"
-                                                data-settings="{&quot;search_type&quot;:&quot;topbar&quot;,&quot;search_width&quot;:&quot;inline&quot;}"
-                                                data-element_type="posSearch.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="pos-search-wrapper">
-                                                        <form class="pos-search  js-dropdown search-topbar"
-                                                            role="search" action="" data-search-controller-url=""
-                                                            method="get">
-                                                            <div class="pos-search__toggle" data-toggle="dropdown">
-                                                                <i class="icon-rt-loupe" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="dropdown-menu">
-                                                                <div class="pos-search__container">
-                                                                    <div class="search-input-container">
-                                                                        <input type="hidden" name="order"
-                                                                            value="product.position.desc">
-                                                                        <input class="pos-search__input" type="search"
-                                                                            name="s" autocomplete="off"
-                                                                            placeholder="Search..." />
-                                                                        <span class="search-clear unvisible"></span>
-                                                                    </div>
-                                                                    <button class="pos-search__submit" type="submit">
-                                                                        <i class="icon-rt-loupe" aria-hidden="true"></i>
-                                                                    </button>
-                                                                    <div
-                                                                        class="dialog-lightbox-close-button dialog-close-button">
-                                                                        <i class="icon-rt-close-outline"
-                                                                            aria-hidden="true"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="pos-search__result unvisible"></div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+
                                 </div>
                             </div>
                     </div>
-                    <!-- <div data-id="fnnxqqt"
-                                    class="elementor-element elementor-element-fnnxqqt elementor-sm-33 elementor-column elementor-col-33 elementor-top-column"
-                                    data-element_type="column">
-                                    <div class="elementor-column-wrap elementor-element-populated">
-                                        <div class="elementor-widget-wrap">
-                                            <div data-id="axblhhm"
-                                                class="elementor-element elementor-element-axblhhm elementor-widget elementor-widget-posLogo"
-                                                data-element_type="posLogo.default"> -->
-                    <!-- <div class="elementor-widget-container">
-                                                    <div id="_desktop_logo">
-                                                        <a href="" class="site-logo">
-                                                            <img src="/demo4/decoration3/img/logo-165225832015.jpg"
-                                                                alt="Ecolife  Responsive Prestashop Theme" />
-                                                        </a>
-                                                    </div>
-                                                </div> -->
-                    <!-- </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+
                     <div data-id="fhjgghq"
                         class="elementor-element elementor-element-fhjgghq elementor-sm-33 elementor-column elementor-col-33 elementor-top-column"
                         data-element_type="column">
                         <div class="elementor-column-wrap elementor-element-populated">
                             <div class="elementor-widget-wrap">
-                                <!-- <div data-id="nfapkhk"
-                                                class="elementor-element elementor-element-nfapkhk button-layout-icon pewidth-inline pos-dropdown-right elementor-widget elementor-widget-posAccount"
-                                                data-settings="{&quot;search_width&quot;:&quot;inline&quot;}"
-                                                data-element_type="posAccount.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="pos-account pos-header-element ">
-                                                        <a href="#" class="account-login">
-                                                            <i class="icon-rt-person-circle-outline"></i>
-                                                            <span>Sign in</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                <!-- <div data-id="orswgzt"
-                                                class="elementor-element elementor-element-orswgzt button-layout-icon pewidth-inline elementor-widget elementor-widget-posCart"
-                                                data-settings="{&quot;search_width&quot;:&quot;inline&quot;}"
-                                                data-element_type="posCart.default">
-                                                <div class="elementor-widget-container">
-                                                    <div id="_desktop_cart_block">
-                                                        <div class="blockcart cart-preview cart-default"
-                                                            data-refresh-url="" data-cartitems="0">
-                                                            <a rel="nofollow" href="#">
-                                                                <i class="icon-rt-bag2"></i>
-                                                                <span class="cart-products-total">$0.00</span>
-                                                                <span class="cart-products-count">0</span>
-                                                            </a>
-                                                            <div class="popup_cart popup-dropdown">
-                                                                <ul>
-                                                                </ul>
-                                                                <div class="price_content">
 
-
-                                                                    <div
-                                                                        class="cart-detailed-totals js-cart-detailed-totals">
-                                                                        <div
-                                                                            class="card-block cart-detailed-subtotals js-cart-detailed-subtotals">
-                                                                            <div class="cart-summary-line"
-                                                                                id="cart-subtotal-products">
-                                                                                <span class="label js-subtotal">
-                                                                                    0 items
-                                                                                </span>
-                                                                                <span class="value">
-                                                                                    $0.00
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                        <div
-                                                                            class="card-block cart-summary-totals js-cart-summary-totals">
-
-
-                                                                            <div class="cart-summary-line">
-                                                                                <span class="label">Total&nbsp;(tax
-                                                                                    excl.)</span>
-                                                                                <span class="value">$0.00</span>
-                                                                            </div>
-                                                                            <div class="cart-summary-line cart-total">
-                                                                                <span class="label">Total (tax
-                                                                                    incl.)</span>
-                                                                                <span class="value">$0.00</span>
-                                                                            </div>
-
-
-
-                                                                            <div class="cart-summary-line">
-                                                                                <span class="label sub">Taxes:</span>
-                                                                                <span class="value sub">$0.00</span>
-                                                                            </div>
-
-
-                                                                        </div>
-
-                                                                    </div>
-
-
-                                                                </div>
-                                                                <div class="checkout">
-                                                                    <a href="" class="btn btn-primary">Checkout</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                             </div>
                         </div>
                     </div>
@@ -821,13 +510,14 @@
                                                                     data-slider_options="{&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1,&quot;autoplay&quot;:true,&quot;autoplaySpeed&quot;:4000,&quot;infinite&quot;:true,&quot;pauseOnHover&quot;:false,&quot;speed&quot;:500,&quot;arrows&quot;:true,&quot;dots&quot;:false,&quot;fade&quot;:true}">
                                                                     <% if (banner) { %>
 
-                                                                        <% for(let i=0; i< banner.length; i++) {%>
+                                                                        <% banner.forEach(function(product){ %>
+
                                                                             <div
                                                                                 class="slideshow-item elementor-repeater-item-8erak2q">
 
 
                                                                                 <div class="slider-item"
-                                                                                    style="background:url('/public/databaseimg/<%=banner[i].image %>');background-size: cover; background-position: center;">
+                                                                                    style="background:url('<%=  product.image %>');background-size: cover; background-position: center;">
                                                                                     <div class="desc-banner">
                                                                                         <div class="container">
                                                                                             <div
@@ -835,12 +525,16 @@
                                                                                                 <div class="title1"
                                                                                                     data-animation="animated rotateInDownLeft">
                                                                                                     Designer Wall Clocks
-                                                                                                    <%=banner.bannertext%>
+                                                                                                    <%=
+                                                                                                        product.bannerName%>
                                                                                                 </div>
                                                                                                 <div class="title2"
                                                                                                     data-animation="animated jackInTheBox">
                                                                                                     SPECIAL OFFER! UP TO
                                                                                                     75% OFF
+                                                                                                    <%=
+                                                                                                        product.bannerOffer%>
+
                                                                                                 </div>
                                                                                                 <a class="slideshow-button"
                                                                                                     href="/product-display"
@@ -851,7 +545,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <%}%>
+                                                                            <%})%>
                                                                                 <% } else { %>
                                                                                     <p>No data available</p>
                                                                                     <% } %>
@@ -1090,93 +784,91 @@
                                                                 <div class="slick-slider-block column-desktop-2 column-tablet-3 column-mobile-2"
                                                                     data-slider_options="{&quot;slidesToShow&quot;:2,&quot;slidesToScroll&quot;:2,&quot;autoplay&quot;:false,&quot;infinite&quot;:false,&quot;arrows&quot;:true,&quot;dots&quot;:false,&quot;rows&quot;:&quot;2&quot;,&quot;autoplaySpeed&quot;:3000,&quot;speed&quot;:500}"
                                                                     data-slider_responsive="{&quot;items_laptop&quot;:2,&quot;items_landscape_tablet&quot;:3,&quot;items_portrait_tablet&quot;:3,&quot;items_landscape_mobile&quot;:2,&quot;items_portrait_mobile&quot;:2,&quot;items_small_mobile&quot;:1,&quot;scroll&quot;:true}">
-                                                                    <% alldetails.slice(0, 6).forEach(function(product){ %>
-                                                                    <div class="slick-slide1 border shadow-sm">
-                                                                        <div class="slick-slide-inner1">
+                                                                    <% alldetails.slice(0, 6).forEach(function(product){
+                                                                        %>
+                                                                        <div class="slick-slide1 border shadow-sm">
+                                                                            <div class="slick-slide-inner1">
 
-                                                                            <article
-                                                                                class="thumbnail-container product-miniature js-product-miniature style_product3"
-                                                                                data-id-product="13"
-                                                                                data-id-product-attribute="0" itemscope
-                                                                                itemtype="">
-                                                                                <div class="img_block">
+                                                                                <article
+                                                                                    class="thumbnail-container product-miniature js-product-miniature style_product3"
+                                                                                    data-id-product="13"
+                                                                                    data-id-product-attribute="0"
+                                                                                    itemscope itemtype="">
 
-                                                                                    <a href="/product-display"
-                                                                                        class="thumbnail product-thumbnail">
-                                                                                        <img class="first-image lazyload"
-                                                                                            data-src="<%= product.image_url[2].url%>"
-                                                                                            src="<%=  product.image_url[0].url %>"
-                                                                                            alt="<%=product.name%>"
-                                                                                            data-full-size-image-url="">
 
-                                                                                    </a>
+                                                                                    <div class="img_block">
 
-                                                                                    
+                                                                                        <a href="/product-display"
+                                                                                            class="thumbnail product-thumbnail">
 
-                                                                                    <ul class="product-flag">
-                                                                                        <li class="new"><span>New
-                                                                                                product</span></li>
-                                                                                    </ul>
 
-                                                                                </div>
-                                                                                <div class="product_desc">
-                                                                                    <div class="manufacturer"><a></a>
-                                                                                        
-                                                                                    </div>
+                                                                                            <img style="max-height:350px"
+                                                                                                class="first-image lazyload"
+                                                                                                data-src="<%= product.image_url[2].url%>"
+                                                                                                src="<%=  product.image_url[0].url %>"
+                                                                                                alt="<%=product.name%>"
+                                                                                                data-full-size-image-url="">
 
-                                                                                    <h3 itemprop="name"><a
-                                                                                        
-                                                                                            class="product_name one_line"
-                                                                                            title="Wooden Floating Shelves"><%=product.name%></a></h3>
-                                                                                    <div
-                                                                                        class="product-price-and-shipping">
+                                                                                        </a>
 
 
 
-                                                                                        <span class="price "
-                                                                                            aria-label="Price">
-                                                                                            <span>&#8377;</span> <%=product.cost%>
-                                                                                        </span>
-
-
-
+                                                                                        <ul class="product-flag">
+                                                                                            <li class="new"><span>New
+                                                                                                    product</span></li>
+                                                                                        </ul>
 
                                                                                     </div>
+                                                                                    <div class="product_desc">
+                                                                                        <div class="manufacturer">
+                                                                                            <a></a>
 
-                                                                                    <div class="availability">
+                                                                                        </div>
+
+                                                                                        <h3 itemprop="name"><a
+                                                                                                class="product_name one_line"
+                                                                                                title="Wooden Floating Shelves">
+                                                                                                <%=product.name%>
+                                                                                            </a></h3>
                                                                                         <div
-                                                                                            class="availability-list in-stock">
-                                                                                            Availability: <span>9999 In
-                                                                                                Stock</span></div>
+                                                                                            class="product-price-and-shipping">
+
+
+
+                                                                                            <span class="price "
+                                                                                                aria-label="Price">
+                                                                                                <span>&#8377;</span>
+                                                                                                <%=product.cost%>
+                                                                                            </span>
+
+
+
+
+                                                                                        </div>
+
+                                                                                        <div class="availability">
+                                                                                            <div
+                                                                                                class="availability-list in-stock">
+                                                                                                Availability: <span>9999
+                                                                                                    In
+                                                                                                    Stock</span></div>
+
+                                                                                        </div>
+
+                                                                                        
+
+
+                                                                                        <div class="variant-links">
+
+
+                                                                                        </div>
 
                                                                                     </div>
-
-                                                                                    <div class="product-desc"
-                                                                                        itemprop="description">
-                                                                                        <p>Healthy snacks can be an
-                                                                                            important part of your diet.
-                                                                                            They provide energy in the
-                                                                                            middle of the day or when
-                                                                                            you exercise. A healthy
-                                                                                            snack between meals can also
-                                                                                            decrease
-                                                                                            your hunger and keep you
-                                                                                            from overeating at meal
-                                                                                            time.</p>
-                                                                                    </div>
-
-
-                                                                                    <div class="variant-links">
-
-
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </article>
+                                                                                </article>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <%})%>
-                                                                   
+                                                                        <%})%>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1251,18 +943,13 @@
                                                                                     itemtype="http://schema.org/Product">
                                                                                     <div class="img_block">
 
-                                                                                        <a href="home/10-fresh-cauliflower.html"
-                                                                                            class="thumbnail product-thumbnail">
-                                                                                            <img class="first-image lazyload"
-                                                                                                data-src="<%= product.image_url[0].url %>"
-                                                                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                                                                alt="Bedroom Hang Light"
-                                                                                                data-full-size-image-url="../383-large_default/fresh-cauliflower.jpg">
-                                                                                            <img class="img-responsive second-image animation1 lazyload"
-                                                                                                data-src="<%= product.image_url[1] %>"
-                                                                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                                                                alt=""
-                                                                                                itemprop="image" />
+                                                                                        <a href="/product-details/<%= product._id%>"
+                                                                                            class="image-link">
+
+
+                                                                                            <img style="max-height:350px"
+                                                                                                src="<%= product.image_url[0].url %>"
+                                                                                                alt="">
 
                                                                                         </a>
 
@@ -1394,20 +1081,6 @@
 
                                                                                         </div>
 
-                                                                                        <div class="product-desc"
-                                                                                            itemprop="description">
-                                                                                            <p>Healthy snacks can be an
-                                                                                                important part of your
-                                                                                                diet. They provide
-                                                                                                energy in the middle of
-                                                                                                the day or when you
-                                                                                                exercise. A healthy
-                                                                                                snack between meals can
-                                                                                                also decrease your
-                                                                                                hunger and keep you from
-                                                                                                overeating at meal time.
-                                                                                            </p>
-                                                                                        </div>
 
 
                                                                                         <div class="variant-links">
@@ -1460,207 +1133,106 @@
 
 
                                 <!-- footer image -->
-                            
-
-
-                <!-- footer image end -->
 
 
 
-
-
-
-                <div class="row row-wrapper">
-
-
-
-                    <div id="content-wrapper" class="js-content-wrapper col-xs-12">
-
-
-
-                        <section id="main">
-
-                            <section id="content" class="page-home">
+                                <!-- footer image end -->
 
 
 
 
 
 
-
-                            </section>
-
-
-
-                            <footer class="page-footer">
-
-                                <!-- Footer content -->
-
-                            </footer>
-
-
-                        </section>
+                                <div class="row row-wrapper">
 
 
 
-                    </div>
+                                    <div id="content-wrapper" class="js-content-wrapper col-xs-12">
 
 
 
-                </div>
-            </div>
+                                        <section id="main">
+
+                                            <section id="content" class="page-home">
+
+
+
+
+
+
+
+                                            </section>
+
+
+
+                                            <footer class="page-footer">
+
+                                                <!-- Footer content -->
+
+                                            </footer>
+
+
+                                        </section>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                        </div>
 
         </section>
 
 
 
-        <div id="offcanvas-about" class="offcanvas offcanvas-rightside offcanvas-mobile-about-section offcanvas-open">
-            <!-- Start Offcanvas Header -->
-            <div class="offcanvas-header text-right">
-                <button class="offcanvas-close">
-                    <i class="ion-android-close"></i>
-                </button>
-            </div>
-            <!-- End Offcanvas Header -->
-            <!-- Start Offcanvas Mobile Menu Wrapper -->
-            <!-- Start Mobile contact Info -->
-            <div class="mobile-contact-info">
-                <div class="logo">
-                    <!-- <a href="index.html"><img src="assets/images/logo/logo_white.png" alt="" /></a> -->
-                </div>
-
-                <div class="mobile-menu-bottom">
-                    <!-- Start Mobile Menu Nav -->
-                    <div class="offcanvas-menu">
-                        <ul>
-                            <li><a href="/userlogin">Login</a></li>
-
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Mobile Menu Nav -->
-                </div>
-                <address class="address">
-                    <span>Admin: Ribin Mathew.</span>
-                    <span>Call Us: 0123456789, 0123456789</span>
-                    <span>Email: ribin@gmail.com</span>
-                </address>
-
-                <ul class="social-link">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                </ul>
-
-                <!-- <ul class="user-link">
-                <li><a href="wishlist.html">Wishlist</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-            </ul> -->
-            </div>
-            <!-- End Mobile contact Info -->
-        </div>
-
-        <link rel="stylesheet" href="/public/asset/css/vendor/vendor.min.css" />
-
-        <link rel="stylesheet" href="/public/asset/css/plugins/plugins.min.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-            integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <script src="/public/asset/js/vendor/vendor.min.js"></script>
-        <script src="/public/asset/js/plugins/plugins.min.js"></script>
-        <script src="/public/asset/js/cart.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+         <!-- <link rel="stylesheet" href="/public/asset/css/vendor/vendor.min.css" /> -->
+
+        <!-- <link rel="stylesheet" href="/public/asset/css/plugins/plugins.min.css" /> -->
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+            integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"> -->
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script> -->
+        <!-- <script src="/public/asset/js/plugins/plugins.min.js"></script> -->
+        <!-- <script src="/public/asset/js/cart.js"></script> -->
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" -->
+            <!-- integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script> -->
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  -->
         <!-- Main JS -->
+
+
+        <script src="/public/asset/js/vendor/vendor.min.js"></script>
+
+
         <script src="/public/asset/js/main.js"></script>
 
         <!-- <footer starting> -->
-            <section class="container-fuid">
-                <body class="d-flex flex-column">
-                    <div id="page-content">
-                      <div class="container text-center">
-                        <div class="row justify-content-center">
-                          <div class="col-md-7">
-                            <h1 class="fw-light mt-4 text-white">Sticky Footer using Flexbox</h1>
-                            <p class="lead text-white-50">Use just two Bootstrap utility classes and three custom CSS rules and you will have a flexbox enabled sticky footer for your website!</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
-                      <div class="container text-center">
+        <section class="container-fuid">
+
+            <body class="d-flex flex-column">
+               
+                <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+                    <div class="container text-center">
                         <small>Copyright &copy; Lightmeup</small>
-                      </div>
-                    </footer>
-                  </body>
-            </section>
+                    </div>
+                </footer>
+            </body>
+        </section>
 
         <!-- <footer starting> -->
 
     </main>
 
 
-    <!-- popup  starting   -->
-
-    <!--
-<div class="back-top"><a href= "#" class="back-top-button"><i class="fa fa-arrow-up"></i></a></div>
-
-<div id="posnewsletterpopup">
-<div class="pnp-close">
-<i class="icon-rt-close-outline"></i>
-</div>
-<div class="pnp-content">
-<div class="pnp-desc"><div class="title-popup">
-<h2>Sign up For Send Newsletter?</h2>
-<p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
-</div></div>
-<div class="pnp-newsletter-form">
-<form data-action="//ecolife.posthemes.com/demo4/decoration3/en/?fc=module&module=ps_emailsubscription&controller=subscription" method="post" class="flex-layout center-vertical">
-    <input class="inputNew form-control grey newsletter-input" type="text" name="email" size="18"
-           placeholder="Enter your e-mail" value=""/>
-    <button type="submit" name="submitpNewsletter" class="btn btn-default pos-btn-newsletter">
-        <span>Subscribe</span>
-    </button>
-    <input type="hidden" name="action" value="0"/>
-</form>
-</div>
-<div class="pnp-close-checkbox">
-<span class="custom-checkbox">
-    <input type="checkbox" name="pnp-checkbox" id="pnp-checkbox"/>
-    <span><i class="icon-rt-checkmark checkbox-checked"></i></span>
-    <label for="pnp-checkbox">Do not show again.</label>
-</span>
-</div>
-</div>
-</div>
-<div id="posnewsletterpopup-overlay"></div>
-<div class="hidden-sm-down pos-recent-orders animated fadeOutDown">
-<span class="close-button"><i class="icon-rt-close-outline"></i></span>
-<div class="pos-recent-orders-inner flex-layout center-vertical">
-</div>
-</div><div id="poscookielaw" class="flex-layout center-vertical space-between">
-This website uses cookies to ensure you get the best experience on our website
-<button class="btn btn-primary" id="poscookielaw-accept">Got it!</button>
-</div> -->
-
-
-    <!-- popup  starting  ending-->
 
 
 
@@ -1670,13 +1242,6 @@ This website uses cookies to ensure you get the best experience on our website
 
 
     <script type="text/javascript" src="/public/js/bottom-046a1434.js"></script>
-
-
-
-
-
-
-
 
 
 

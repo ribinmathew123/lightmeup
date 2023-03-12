@@ -34,13 +34,18 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-body">
       <form action="/admin/adminbanner" method="post"  enctype="multipart/form-data">
         <div class="form-group">
-          <label for="file-upload" class="form-label">Banner Text</label>
+          <label for="file-upload" class="form-label">Banner Name </label>
+          <textarea type="text" placeholder="Banner Text" name="name"> </textarea>
 
-          <textarea type="text" placeholder="Banner Text" name="bannertext"> </textarea>
+
+          <label for="file-upload" class="form-label">Banner Offer Text</label>
+
+          <textarea type="text" placeholder="Banner Text" name="offer"> </textarea>
           <br>
           <label for="file-upload" class="form-label">Images to upload</label>
-              <input class="form-control" type="file" id="file"
-        onchange="return fileValidation()" name="image" accept="image/*" multiple >                    
+          <input type="file" id="file" name="images" onchange="return fileValidation()" multiple> 
+
+
         </div>
 </div>
 <div class="modal-footer">

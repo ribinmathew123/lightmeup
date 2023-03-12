@@ -154,14 +154,19 @@ const userVerification = async (req, res) => {
 // load home page
 
 const loadHome = async (req, res,next) => {
-  req.session.userEmail;
   try {
     const bannerimg = await bannermodel.find({status:true});
+    const email =req.session.userEmail;
+
+    const userData = await User.findOne({ email: email });
+
+  
+
     Product.find({}, (err, details) => {
       if (err) {
         console.log(err);
       } else {
-        res.render("../views/user/userHome.ejs", { alldetails: details, banner: bannerimg });
+        res.render("../views/user/userHome.ejs", { alldetails: details, banner: bannerimg ,ses:req.session.userEmail , user:userData});
       }
     });
   } catch (error) {
@@ -221,7 +226,7 @@ const getProfileAddressPage=async(req,res,next)=>{
     let email = req.session.userEmail;
     const userData = await User.findOne({ email: email });
     
-   res.render("../views/user/useraddressprint.ejs", {
+   res.render("../views/user/useraddressprint.ejs", {ses:req.session.userEmail , user:userData,
       login: req.session,
       userDatas: userData,
     });
@@ -356,7 +361,8 @@ const getallproductpage = async (req, res) => {
       .sort(sort)
       .skip((perPage * (page - 1)))
       .limit(perPage);
-
+      let email = req.session.userEmail;
+      const userData = await User.findOne({ email: email });
     res.render('../views/user/shop.ejs', {
       alldetails: products,
       catData: categoryData,
@@ -367,7 +373,8 @@ const getallproductpage = async (req, res) => {
       prevPage,
       searchKeyword,
       sortby: sortOption,
-      selectedCategory: category
+      selectedCategory: category,
+      ses:req.session.userEmail , user:userData
     });
   } catch (error) {
     console.log(error.message);
@@ -383,9 +390,12 @@ const getallproductpage = async (req, res) => {
 const getproductdetailspage = async (req, res,next) => {
 
   try {
+    let email = req.session.userEmail;
+    const userData = await User.findOne({ email: email });
     Product.findById({ _id: req.params?.product_id }).then((product) => {
       res.render("../views/user/singleProductPage.ejs", {
-         productDetails: product,
+         productDetails: product, ses:req.session.userEmail , user:userData
+
       });
     });
    
@@ -455,6 +465,9 @@ const getuserProfilePage = async (req, res, next) => {
       userDatas: userData,
       orderList,
       Dataid: userId,
+      user:userData,
+    ses:req.session.userEmail ,
+      
       
     });
   } catch (error) {
@@ -466,43 +479,6 @@ const getuserProfilePage = async (req, res, next) => {
 
 
 
-// const getuserProfilePage = async (req, res, next) => {
-//   try {
-    
-//     let email = req.session.userEmail;
-//     const userData = await User.findOne({ email: email });
-   
-//     const userId = userData._id;
-    
-//     const orderList = await orderModel.aggregate([
-//       {
-//          $unwind: "$orderItems",
-//       },
-//      {
-//      $lookup: {
-//           from: "products",
-//             localField: "orderItems.productId",
-//            foreignField: "_id",
-//            as: "product",
-//          },
-//        },
-//       {
-//          $unwind: "$product",
-//        },
-//     ]);
-  
-//     console.log('====================================');
-//     console.log(orderList);
-//     console.log('====================================');
-//     res.render("../views/user/userProfile", {
-//       login: req.session,
-//       userDatas: userData,orderList, 
-//       Dataid: userId,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-//   };
 
 
 
@@ -688,6 +664,7 @@ const postAddress = async (req, res, next) => {
     res.render("../views/user/checkout.ejs", {
       login: req.session,
       userDatas: userData,
+    ses:req.session.userEmail , user:userData
     });
   } catch (error) {
     next(error);
@@ -805,7 +782,6 @@ const userAddressDelete = async (req, res,next) => {
 
   const userAddressEdit = async (req, res,next) => {
     try {
-      
       const addressId = req.query.addressId;
       const email = req.session.userEmail;
       const userData = await User.findOne({ email: email });
@@ -815,6 +791,9 @@ const userAddressDelete = async (req, res,next) => {
       );
   
       res.render("../views/user/addressEditPage.ejs", {
+
+    ses:req.session.userEmail , user:userData,
+
         login: req.session,
         address: address,
       });
@@ -948,8 +927,11 @@ const postuserChangePasswordPage = async (req, res, next) => {
 
 const codSuccessPage=async(req,res, next)=>{
   try {
+    let email = req.session.userEmail;
+    const userData = await User.findOne({ email: email });
     
-    res.render("../views/user/successPage.ejs")
+    
+    res.render("../views/user/successPage.ejs", { ses:req.session.userEmail , user:userData})
   } catch (error) {
     next(error)
  }

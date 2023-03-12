@@ -20,15 +20,15 @@ const couponSchema = new mongoose.Schema({
   },
   endDate: {
     type: Date,
-    required: true
+    
   },
   minimumAmount: {
     type: Number,
-    required: true
+    
   },
   maximumAmount: {
     type: Number,
-    required: true
+  
   },
   discount: {
     type: Number,

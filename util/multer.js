@@ -9,7 +9,6 @@ const storage=multer.diskStorage({
         const name=Date.now()+'-'+file.originalname;
         cb(null,name);
     }
-
 })
 const upload=multer({storage:memoryStorage})
 module.exports=upload;

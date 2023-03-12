@@ -6,12 +6,23 @@ const couponModel = require("../models/couponModel");
 const ordermodel = require("../models/orderModel")
 const bannermodel = require("../models/bannermodel");
 const bcrypt = require("bcrypt");
-const { render } = require("ejs");
+const sharp = require("sharp");
+const multer = require("multer");
+
+const storage = multer.memoryStorage();
+
+const { cloudinaryConfig, uploader } = require("../config/cloudinary");
+
+
+const uploadSingleImage = multer({ storage }).single("images");
+const DataUri = new require("datauri/parser");
+const dUri = new DataUri();
+const path = require("path");
 
 
 
 
-const adminLoginpage = async (req, res,next) => {
+const adminLoginpage = async (req, res, next) => {
   try {
     res.render("../views/admin/adminLogin.ejs");
   } catch (error) {
@@ -24,14 +35,14 @@ const adminverification = async (req, res, next) => {
   try {
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminPassword = process.env.ADMIN_PASSWORD;
-   
+
 
     if (req.body.email === adminEmail && req.body.password === adminPassword) {
       req.session.email = adminEmail;
       res.redirect("/admin");
     } else {
       res.render("../views/admin/adminLogin.ejs");
-    
+
     }
 
   } catch (error) {
@@ -41,46 +52,47 @@ const adminverification = async (req, res, next) => {
 
 
 
-const dashBoardOrderStatus=async(req,res,next)=>{
-try {
-  const orderCounts = await ordermodel.aggregate([
-    {
-      $group: {
-        _id: "$orderStatus",
-        count: { $sum: 1 },
-      },
-    },
-  ]);
-  
-  const counts = {};
-  orderCounts.forEach(({ _id, count }) => {
-    counts[_id] = count;
-  });
-  res.json({
-    delivered: counts['delivered'] || 0, 
-    pending: counts['pending'] || 0,
-    outdelivery: counts['out for Delivery'] || 0,
-    ship: counts['shipped'] || 0,
-  });
-
-} catch (error) {
-next(error)}
-}
-
-
-const adminhomepageload = async (req, res,next) => {
+const dashBoardOrderStatus = async (req, res, next) => {
   try {
-  const orderData = await ordermodel.find();
-  const userData = await User.find();
-  const productData = await Product.find();
-res.render("../views/admin/adminHome.ejs", {  orderData, userData, productData})
+    const orderCounts = await ordermodel.aggregate([
+      {
+        $group: {
+          _id: "$orderStatus",
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+
+    const counts = {};
+    orderCounts.forEach(({ _id, count }) => {
+      counts[_id] = count;
+    });
+    res.json({
+      delivered: counts['delivered'] || 0,
+      pending: counts['pending'] || 0,
+      outdelivery: counts['out for Delivery'] || 0,
+      ship: counts['shipped'] || 0,
+    });
+
   } catch (error) {
-next(error)    
+    next(error)
   }
 }
 
 
-const getuserlistpage = async (req, res,next) => {
+const adminhomepageload = async (req, res, next) => {
+  try {
+    const orderData = await ordermodel.find();
+    const userData = await User.find();
+    const productData = await Product.find();
+    res.render("../views/admin/adminHome.ejs", { orderData, userData, productData })
+  } catch (error) {
+    next(error)
+  }
+}
+
+
+const getuserlistpage = async (req, res, next) => {
   try {
     User.find({}, (err, userdetails) => {
       if (err) {
@@ -92,7 +104,8 @@ const getuserlistpage = async (req, res,next) => {
       }
     });
   } catch (error) {
-next(error)  }
+    next(error)
+  }
 };
 
 
@@ -120,7 +133,7 @@ const newUserLoad = async (req, res) => {
 
 
 
-const getproducteditpage = async (req, res,next) => {
+const getproducteditpage = async (req, res, next) => {
   try {
     const id = req.query.id;
     const userData = await Product.findById({ _id: id });
@@ -134,11 +147,12 @@ const getproducteditpage = async (req, res,next) => {
       });
     }
   } catch (error) {
-next(error)  }
+    next(error)
+  }
 };
 
 
-const blockuser = async (req, res,next) => {
+const blockuser = async (req, res, next) => {
   try {
     const check = await User.findById({ _id: req.query.id });
     if (check.iBlocked == true) {
@@ -154,14 +168,15 @@ const blockuser = async (req, res,next) => {
     }
     res.redirect("/admin/user-list");
   } catch (error) {
-next(error)  }
+    next(error)
+  }
 };
 
 
 
 
 // coupon management
-const getCouponPage = async (req, res,next) => {
+const getCouponPage = async (req, res, next) => {
   try {
     res.render("../views/admin/couponPage.ejs");
   } catch (error) {
@@ -170,7 +185,7 @@ const getCouponPage = async (req, res,next) => {
 };
 
 
-const postCouponPage = async (req, res,next) => {
+const postCouponPage = async (req, res, next) => {
   const data = {
     couponName: req.body.couponName,
     description: req.body.des,
@@ -186,12 +201,12 @@ const postCouponPage = async (req, res,next) => {
     await coupon.save();
     res.redirect("/admin/couponData");
   } catch (error) {
-       next(error);
+    next(error);
   }
 };
 
 
-const getCouponDisplayPage = async (req, res,next) => {
+const getCouponDisplayPage = async (req, res, next) => {
   try {
     const couponData = await couponModel.find();
     res.render("../views/admin/couponDisplayPage", { couponData });
@@ -202,7 +217,7 @@ const getCouponDisplayPage = async (req, res,next) => {
 }
 
 
-const getCouponEditPage = async (req, res,next) => {
+const getCouponEditPage = async (req, res, next) => {
   try {
     const couponData = await couponModel.find({ _id: req.query.id })
     res.render("../views/admin/couponEditPage.ejs", { couponData })
@@ -212,18 +227,18 @@ const getCouponEditPage = async (req, res,next) => {
 }
 
 
-const getCouponDeletPage = async (req, res,next) => {
+const getCouponDeletPage = async (req, res, next) => {
   try {
     const couponData = await couponModel.findByIdAndDelete({ _id: req.query.id });
     res.redirect("/admin/couponData");
   } catch (error) {
-  next(error);
+    next(error);
   }
 }
 
 
 
-const postCouponEditPage = async (req, res,next) => {
+const postCouponEditPage = async (req, res, next) => {
   try {
     const userData = await couponModel.findByIdAndUpdate({ _id: req.query.id },
       {
@@ -244,17 +259,84 @@ const postCouponEditPage = async (req, res,next) => {
   }
 }
 
-const insertbanner = (req, res,next) => {
+
+
+
+// const insertbanner = async(req, res, next) => {
+//   console.log('====================================');
+//   console.log("ddddddddddddd");
+//   console.log('====================================');
+
+//   try {
+// console.log('sssssssssssssss');
+// console.log(req.file);
+// console.log('mmmmmmmmmmmmmmmm');
+//     if (req.files) {
+//       const file = dUri.format(
+//         path.extname(req.file.originalname).toString(),
+//         req.file.buffer
+//       ).content;
+//       const result = await uploader.upload(file, {
+//         transformation: [
+//           { width: 800, height: 880, gravity: "face", crop: "fill" },
+//         ],
+//       });
+
+
+//       const data = {
+//         image: result,
+
+//       };
+
+//       const banner = new  bannermodel(data);
+//       await banner.save();
+//       res.redirect("/admin/adminbanner");
+//     } }catch (error) {
+//       next(error)
+//     }
+//   };
+
+const insertbanner = async (req, res, next) => {
+
+
   try {
-    let banner = new bannermodel({
-      bannertext: req.body.bannertext,
-      image: req.file.filename,
-    });
-    banner.save();
-    res.redirect("/admin/adminbanner");
+ 
+
+    if (req.file) {
+      const file = dUri.format(
+        path.extname(req.file.originalname).toString(),
+        req.file.buffer
+      ).content;
+
+      const result = await uploader.upload(file, {
+        transformation: [{ width: 1745, height: 670, gravity: "face", crop: "fill" }],
+      });
+
+      const data = {
+        image: result.secure_url, 
+        bannerName:req.body.name,
+        bannerOffer:req.body.offer,
+
+      };
+
+      const banner = new bannermodel(data);
+      banner.save();
+      res.redirect("/admin/adminbanner");
+    }
   } catch (error) {
-next(error)  }
+    next(error);
+  }
 };
+
+
+
+
+
+
+
+
+
+
 
 const banner = async (req, res) => {
   try {
@@ -269,7 +351,10 @@ const banner = async (req, res) => {
 };
 
 
-const bannerblock = async (req, res,next) => {
+
+
+
+const bannerblock = async (req, res, next) => {
   try {
     const check = await bannermodel.findById({ _id: req.query.id });
 
@@ -286,7 +371,8 @@ const bannerblock = async (req, res,next) => {
     }
     res.redirect("/admin/adminbanner");
   } catch (error) {
-next(error)  }
+    next(error)
+  }
 };
 
 
@@ -445,6 +531,7 @@ module.exports = {
   insertbanner
   , bannerblock,
   banner,
-   dashBoardDataGet,
-   dashBoardOrderStatus,
+  dashBoardDataGet,
+  dashBoardOrderStatus,
+  uploadSingleImage,
 };
