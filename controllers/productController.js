@@ -22,9 +22,10 @@ const { cloudinaryConfig, uploader } = require("../config/cloudinary");
 
 const { spawn } = require("child_process");
 
-
 const postAddCategoryPage = async (req, res, next) => {
   try {
+    console.log("hiii");
+
     let categoryName = req.body.catname.trim();
     categoryName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
     const existingCategory = await categorymodel.findOne({
